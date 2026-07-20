@@ -1,108 +1,74 @@
-<!DOCTYPE html>
+<?php
+
+declare(strict_types=1);
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+?><!doctype html>
 <html <?php language_attributes(); ?>>
-
 <head>
-
-<meta charset="<?php bloginfo('charset'); ?>">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<?php wp_head(); ?>
-
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 
 <?php wp_body_open(); ?>
 
-<div class="site-loader">
+<div class="g-site">
 
-    <div class="loader-spinner"></div>
+<a class="g-skip-link" href="#content">
+    <?php esc_html_e('Lewati ke konten', 'gesahan-news-pro'); ?>
+</a>
 
-</div>
+<header class="g-header" role="banner">
+    <div class="g-container g-header__inner">
 
-<div class="topbar">
+        <div class="g-brand">
+            <?php if (has_custom_logo()) : ?>
 
-    <div class="container topbar-inner">
+                <?php the_custom_logo(); ?>
 
-        <div class="topbar-left">
+            <?php else : ?>
 
-            <span>
+                <a class="g-brand__title" href="<?php echo esc_url(home_url('/')); ?>">
+                    <?php bloginfo('name'); ?>
+                </a>
 
-                <?php echo date_i18n('l, d F Y'); ?>
+                <div class="g-brand__tagline">
+                    <?php bloginfo('description'); ?>
+                </div>
 
-            </span>
-
+            <?php endif; ?>
         </div>
 
-        <div class="topbar-right">
-
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Youtube</a>
-            <a href="#">X</a>
-
-        </div>
-
-    </div>
-
-</div>
-
-<header class="site-header">
-
-    <div class="container">
-
-        <div class="header-inner">
-
-            <div class="logo">
-
-                <?php
-
-                if (has_custom_logo()) {
-
-                    the_custom_logo();
-
-                } else {
-                ?>
-
-                    <a href="<?php echo esc_url(home_url('/')); ?>">
-
-                        <h1>GESAHAN</h1>
-
-                        <span>NEWS PRO</span>
-
-                    </a>
-
-                <?php } ?>
-
-            </div>
-
-            <button class="mobile-menu-toggle">
-
-                ☰
-
-            </button>
-
-            <nav class="main-nav">
-
-                <?php
-
-                wp_nav_menu([
-                    'theme_location' => 'primary',
-                    'container'      => false,
-                    'menu_class'     => 'menu'
-                ]);
-
-                ?>
-
-            </nav>
-
-            <?php get_template_part('template-parts/header/search-button'); ?>
-
+        <div class="g-header__meta">
+            <?php echo esc_html(wp_date('l, d F Y')); ?>
         </div>
 
     </div>
-
 </header>
 
-<?php get_template_part('template-parts/header/navbar'); ?>
+<nav class="g-nav" aria-label="<?php esc_attr_e('Navigasi utama', 'gesahan-news-pro'); ?>">
+    <div class="g-container g-nav__inner">
+        <?php
+        if (has_nav_menu('primary')) {
+            wp_nav_menu(
+                [
+                    'theme_location' => 'primary',
+                    'container'      => false,
+                    'menu_class'     => 'g-nav__menu',
+                    'fallback_cb'    => false,
+                    'depth'          => 1,
+                ]
+            );
+        } else {
+            echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html__('Beranda', 'gesahan-news-pro') . '</a>';
+            echo '<a href="' . esc_url(admin_url('nav-menus.php')) . '">' . esc_html__('Atur Menu', 'gesahan-news-pro') . '</a>';
+        }
+        ?>
+    </div>
+</nav>

@@ -1,0 +1,85 @@
+/*
+=========================================================
+GESAHAN NEWS FRAMEWORK
+
+Typography
+
+=========================================================
+*/
+
+body{
+    font-family:var(--gn-font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    color:var(--gn-color-title);
+
+    font-weight:var(--gn-font-black);
+
+    line-height:1.1;
+
+    letter-spacing:-0.04em;
+
+}
+
+h1{
+
+    font-size:clamp(2.5rem,5vw,4.5rem);
+
+}
+
+h2{
+
+    font-size:clamp(2rem,4vw,3rem);
+
+}
+
+h3{
+
+    font-size:clamp(1.6rem,3vw,2.2rem);
+
+}
+
+h4{
+
+    font-size:1.5rem;
+
+}
+
+h5{
+
+    font-size:1.25rem;
+
+}
+
+h6{
+
+    font-size:1rem;
+
+}
+
+p{
+
+    color:var(--gn-color-text);
+
+    margin-bottom:var(--gn-space-4);
+
+}
+
+strong{
+
+    font-weight:var(--gn-font-bold);
+
+}
+
+small{
+
+    font-size:var(--gn-font-size-sm);
+
+}

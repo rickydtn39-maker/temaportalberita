@@ -1,0 +1,92 @@
+/*
+=========================================================
+GESAHAN NEWS FRAMEWORK
+
+Reset CSS
+Version : 2.0.0
+
+=========================================================
+*/
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    min-height:100vh;
+    background:var(--gn-color-body);
+    color:var(--gn-color-text);
+    font-family:var(--gn-font-family);
+    font-size:var(--gn-font-size-base);
+    line-height:var(--gn-line-height);
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+img,
+picture{
+    display:block;
+    max-width:100%;
+    height:auto;
+}
+
+svg{
+    display:block;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+    transition:var(--gn-transition);
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+    background:none;
+    border:none;
+}
+
+ul,
+ol{
+    list-style:none;
+}
+
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+blockquote{
+    margin:0;
+}
+
+iframe{
+    border:0;
+}
+
+:focus-visible{
+    outline:3px solid var(--gn-color-primary);
+    outline-offset:3px;
+}
+
+::selection{
+    background:var(--gn-color-primary);
+    color:#ffffff;
+}

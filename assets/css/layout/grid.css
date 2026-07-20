@@ -1,0 +1,43 @@
+/*
+=========================================================
+Grid
+=========================================================
+*/
+
+.gn-grid{
+
+    display:grid;
+
+    gap:var(--gn-space-6);
+
+}
+
+.gn-grid-2{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.gn-grid-3{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.gn-grid-4{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+@media(max-width:992px){
+
+    .gn-grid-2,
+    .gn-grid-3,
+    .gn-grid-4{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
