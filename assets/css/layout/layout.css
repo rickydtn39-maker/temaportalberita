@@ -1,0 +1,44 @@
+/*
+=========================================================
+GESAHAN NEWS FRAMEWORK
+
+Layout Engine
+
+=========================================================
+*/
+
+.gn-site{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.gn-main{
+    flex:1;
+    padding:48px 0;
+}
+
+.gn-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 340px;
+    gap:32px;
+    align-items:start;
+}
+
+.gn-content{
+    min-width:0;
+}
+
+.gn-sidebar{
+    min-width:0;
+}
+
+@media (max-width:1024px){
+
+    .gn-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
