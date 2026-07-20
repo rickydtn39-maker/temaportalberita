@@ -1,0 +1,45 @@
+/*
+=========================================================
+Header
+=========================================================
+*/
+
+.gn-header{
+
+    background:#0f172a;
+
+    border-bottom:4px solid var(--gn-color-primary);
+
+}
+
+.gn-header__inner{
+
+    min-height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.gn-logo{
+
+    color:#ffffff;
+
+    font-size:2rem;
+
+    font-weight:900;
+
+    letter-spacing:-1px;
+
+}
+
+.gn-header__right{
+
+    color:#cbd5e1;
+
+    font-size:.9rem;
+
+}

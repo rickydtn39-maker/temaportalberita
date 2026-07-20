@@ -1,0 +1,71 @@
+/*
+=========================================================
+Section
+=========================================================
+*/
+
+.gn-section{
+
+    margin-bottom:80px;
+
+}
+
+.gn-section__header{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    gap:24px;
+
+    margin-bottom:32px;
+
+    padding-bottom:16px;
+
+    border-bottom:1px solid var(--gn-color-border);
+
+}
+
+.gn-section__title{
+
+    margin:0;
+
+    font-size:2rem;
+
+    font-weight:var(--gn-font-black);
+
+    color:var(--gn-color-title);
+
+}
+
+.gn-section__description{
+
+    margin-top:8px;
+
+    color:var(--gn-color-meta);
+
+    font-size:.95rem;
+
+}
+
+.gn-section__action a{
+
+    color:var(--gn-color-primary);
+
+    font-weight:700;
+
+}
+
+@media(max-width:768px){
+
+    .gn-section__header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}

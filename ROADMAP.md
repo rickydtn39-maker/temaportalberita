@@ -1,147 +1,97 @@
 # Gesahan News Pro
 
-Premium WordPress News Theme
+## Development Roadmap
 
 ---
 
-# Visi Proyek
+# Version 2.0
 
-Membangun tema WordPress Portal Berita Premium yang:
+## Foundation
 
-- Modern
-- Ringan
-- Cepat
-- SEO Friendly
-- Mobile First
-- Responsif
-- Mudah dikustomisasi
-- Menggunakan WordPress Coding Standards
-- Tanpa Bootstrap
-- Tanpa Tailwind
-- Menggunakan CSS dan JavaScript murni
-
-Target pengguna:
-
-- Portal Berita Nasional
-- Portal Berita Daerah
-- Media Pemerintah
-- Media Kampus
-- Media Perusahaan
-- Majalah Online
+- [x] Project Reset
+- [x] New Architecture
+- [x] Design Tokens
+- [x] Framework CSS
+- [x] Layout Engine
+- [x] Query API
+- [x] Homepage Engine
 
 ---
 
-# Roadmap
-
-## Versi 0.1 — Fondasi
-
-- [x] Struktur Folder
-- [x] GitHub Repository
-- [x] Modular PHP
-- [x] CSS Modular
-- [ ] Theme Setup
-- [ ] Theme Assets
-- [ ] Navigation Menu
-- [ ] Widget Area
-- [ ] Typography System
-- [ ] Color System
-
----
-
-## Versi 0.2 — Header
+## Header Premium
 
 - [ ] Top Bar
-- [ ] Logo
-- [ ] Breaking News
+- [ ] Brand Header
 - [ ] Navigation
-- [ ] Mega Menu
 - [ ] Search
 - [ ] Dark Mode
-- [ ] Mobile Menu
 - [ ] Sticky Header
+- [ ] Mobile Navigation
+- [ ] Breaking News
 
 ---
 
-## Versi 0.3 — Homepage
+## Hero Premium
 
-- [ ] Hero Section
-- [ ] Hero Slider
-- [ ] Trending News
+- [ ] Editorial Hero
+- [ ] Hero Grid
+- [ ] Featured Story
+- [ ] Side Headlines
+
+---
+
+## Homepage
+
 - [ ] Latest News
-- [ ] Category Block
-- [ ] Popular News
+- [ ] Trending
+- [ ] Popular
 - [ ] Editor Choice
+- [ ] Category Blocks
 - [ ] Video Section
-- [ ] Advertisement
+- [ ] Newsletter
 
 ---
 
-## Versi 0.4 — Single Post
+## Single Post
 
 - [ ] Breadcrumb
 - [ ] Reading Time
-- [ ] Share Button
+- [ ] Share Buttons
 - [ ] Author Box
 - [ ] Related Posts
-- [ ] Next Previous Post
 - [ ] Comments
 
 ---
 
-## Versi 0.5 — Archive
+## Archive
 
 - [ ] Category
 - [ ] Tag
 - [ ] Search
 - [ ] Author
-- [ ] Date Archive
 
 ---
 
-## Versi 0.6 — Sidebar
+## Theme
 
-- [ ] Popular
-- [ ] Trending
-- [ ] Advertisement
-- [ ] Newsletter
-- [ ] Social Media
+- [ ] Theme Options
+- [ ] Customizer
+- [ ] Dark Mode
 
 ---
 
-## Versi 0.7 — Footer
+## Optimization
 
-- [ ] Footer Widget
-- [ ] Footer Menu
-- [ ] Copyright
-- [ ] Social Media
-
----
-
-## Versi 0.8 — Theme Options
-
-- [ ] Logo
-- [ ] Color
-- [ ] Typography
-- [ ] Header
-- [ ] Footer
-- [ ] Advertisement
-- [ ] Social Media
-
----
-
-## Versi 0.9 — Optimasi
-
-- [ ] SEO
-- [ ] Schema.org
-- [ ] Accessibility
-- [ ] Lazy Load
 - [ ] Performance
+- [ ] SEO
+- [ ] Accessibility
+- [ ] Schema
 - [ ] Core Web Vitals
 
 ---
 
-## Versi 1.0
+## Release
 
-- [ ] Final Testing
+- [ ] Testing
 - [ ] Bug Fix
-- [ ] Release
+- [ ] Version 2.0 Stable

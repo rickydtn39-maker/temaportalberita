@@ -10,55 +10,69 @@ get_header();
 
 ?>
 
-<main id="content" class="g-main">
+<div class="gn-container">
 
-    <div class="g-container">
+    <section style="padding:64px 0;">
 
-        <section class="g-hero" aria-labelledby="gesahan-hero-title">
+        <h1 style="margin-bottom:40px;">
+            Generation 2
+        </h1>
 
-            <div class="g-hero__eyebrow">
-                <?php esc_html_e('Generation 2', 'gesahan-news-pro'); ?>
-            </div>
+        <div class="gn-grid gn-grid-3">
 
-            <h1 id="gesahan-hero-title" class="g-hero__title">
-                <?php esc_html_e('Portal berita modern dengan fondasi premium.', 'gesahan-news-pro'); ?>
-            </h1>
+            <?php
+            if (have_posts()) :
 
-            <p class="g-hero__desc">
-                <?php esc_html_e('Gesahan News Pro sedang dibangun ulang dengan arsitektur baru, desain editorial modern, dan pengalaman membaca yang lebih kuat.', 'gesahan-news-pro'); ?>
-            </p>
-
-        </section>
-
-        <?php if (have_posts()) : ?>
-
-            <section class="g-post-grid" aria-label="<?php esc_attr_e('Daftar berita', 'gesahan-news-pro'); ?>">
-
-                <?php
                 while (have_posts()) :
                     the_post();
                     ?>
 
-                    <article <?php post_class('g-post-card'); ?>>
+                    <article class="gn-card">
 
-                        <?php if (has_post_thumbnail()) : ?>
+                        <a class="gn-card__image" href="<?php the_permalink(); ?>">
 
-                            <a class="g-post-card__image" href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
-                                <?php the_post_thumbnail('medium_large'); ?>
-                            </a>
+                            <?php
+                            if (has_post_thumbnail()) {
 
-                        <?php endif; ?>
+                                the_post_thumbnail('large');
 
-                        <div class="g-post-card__body">
+                            }
+                            ?>
 
-                            <h2 class="g-post-card__title">
+                        </a>
+
+                        <div class="gn-card__body">
+
+                            <?php
+                            $categories = get_the_category();
+
+                            if (!empty($categories)) :
+                            ?>
+
+                                <span class="gn-card__badge">
+
+                                    <?php echo esc_html($categories[0]->name); ?>
+
+                                </span>
+
+                            <?php endif; ?>
+
+                            <h2 class="gn-card__title">
+
                                 <a href="<?php the_permalink(); ?>">
+
                                     <?php the_title(); ?>
+
                                 </a>
+
                             </h2>
 
-                            <div class="g-post-card__meta">
-                                <?php echo esc_html(get_the_date()); ?>
+                            <div class="gn-card__meta">
+
+                                <span><?php echo esc_html(get_the_date()); ?></span>
+
+                                <span><?php the_author(); ?></span>
+
                             </div>
 
                         </div>
@@ -66,22 +80,21 @@ get_header();
                     </article>
 
                     <?php
+
                 endwhile;
-                ?>
 
-            </section>
+            else :
+            ?>
 
-        <?php else : ?>
+                <p>Belum ada artikel.</p>
 
-            <div class="g-empty">
-                <?php esc_html_e('Belum ada berita yang diterbitkan.', 'gesahan-news-pro'); ?>
-            </div>
+            <?php endif; ?>
 
-        <?php endif; ?>
+        </div>
 
-    </div>
+    </section>
 
-</main>
+</div>
 
 <?php
 

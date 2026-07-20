@@ -1,62 +1,130 @@
-# \# Gesahan News Pro
+# Gesahan News Pro
 
-# 
+Gesahan News Pro adalah framework tema WordPress untuk portal berita modern yang dibangun dengan fokus pada performa, pengalaman membaca, arsitektur modular, dan kemudahan pengembangan.
 
-# Professional News WordPress Theme
+Proyek ini tidak hanya bertujuan menjadi tema WordPress, tetapi menjadi fondasi (framework) untuk berbagai jenis media digital.
 
-# 
+---
 
-# Features:
+## Visi
 
-# 
+Membangun tema WordPress portal berita premium yang:
 
-# \- Breaking News
+- Cepat
+- Modern
+- Mobile First
+- SEO Friendly
+- Modular
+- Mudah dikembangkan
+- Mengikuti WordPress Coding Standards
 
-# \- Hero News Slider
+---
 
-# \- Trending Sidebar
+## Target Pengguna
 
-# \- Editor Picks
+- Portal Berita Nasional
+- Portal Berita Daerah
+- Media Pemerintah
+- Media Kampus
+- Media Perusahaan
+- Majalah Online
 
-# \- Popular News
+---
 
-# \- Related Posts
+## Teknologi
 
-# \- Author Box
+- WordPress
+- PHP 8.2+
+- CSS Modern
+- Vanilla JavaScript
+- HTML5 Semantic
 
-# \- Breadcrumb
+---
 
-# \- Reading Time
+## Fitur Utama
 
-# \- Search Page
-
-# \- Category Page
-
-# \- Responsive Design
-
-# \- Sticky Header
-
-# \- Mobile Menu
-
-# \- Advertisement Ready
-
-# 
-
-# Version: 1.0.0
-
-
-## Changelog
-
-### 1.0.0
-
-- Initial Release
-- Professional News Layout
-- Responsive Design
-- Breaking News Ticker
-- Hero News Section
-- Trending Sidebar
-- Author Box
+- Editorial Homepage
+- Hero Premium
+- Breaking News
+- Trending News
+- Latest News
+- Category Blocks
+- Reading Time
 - Related Posts
-- Sticky Header
-- Footer Premium
-- Mobile Navigation
+- Author Box
+- Breadcrumb
+- Responsive Layout
+- Dark Mode
+- Theme Customizer
+- SEO Friendly
+- Schema Ready
+
+---
+
+## Arsitektur
+
+```
+Framework
+    ↓
+Layout
+    ↓
+Components
+    ↓
+Sections
+    ↓
+Pages
+```
+
+---
+
+## Struktur Folder
+
+```
+gesahan-news-pro
+│
+├── assets
+├── inc
+├── template-parts
+├── front-page.php
+├── header.php
+├── footer.php
+├── functions.php
+├── index.php
+└── style.css
+```
+
+---
+
+## Persyaratan
+
+- WordPress 6.8+
+- PHP 8.2+
+- MySQL 8+
+
+---
+
+## Filosofi
+
+Content First.
+
+Framework dibuat untuk membantu pembaca menikmati berita, bukan sekadar mempercantik tampilan.
+
+---
+
+## Status
+
+Sedang dalam pengembangan aktif.
+
+Versi saat ini:
+
+```
+2.0.0 Alpha
+```
+
+---
+
+## Developer
+
+Ricky Apriliansyah
+
+Powered by Gesahan News Framework.

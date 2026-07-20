@@ -1,27 +1,19 @@
-<?php
+</main>
 
-declare(strict_types=1);
+<footer class="gn-footer">
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+    <div class="gn-container">
 
-?>
+        <p>
 
-<footer class="g-footer" role="contentinfo">
-    <div class="g-container g-footer__inner">
+            © <?php echo esc_html(wp_date('Y')); ?>
 
-        <div>
-            &copy; <?php echo esc_html(wp_date('Y')); ?>
-            <?php bloginfo('name'); ?>.
-            <?php esc_html_e('All rights reserved.', 'gesahan-news-pro'); ?>
-        </div>
+            <?php bloginfo('name'); ?>
 
-        <div>
-            <?php esc_html_e('Gesahan News Pro Generation 2', 'gesahan-news-pro'); ?>
-        </div>
+        </p>
 
     </div>
+
 </footer>
 
 </div>
@@ -29,4 +21,5 @@ if (!defined('ABSPATH')) {
 <?php wp_footer(); ?>
 
 </body>
+
 </html>
