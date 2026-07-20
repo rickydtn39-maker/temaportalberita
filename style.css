@@ -1,0 +1,69 @@
+/*
+Theme Name: Gesahan News Pro
+Theme URI: https://gesahannusantara.com
+Author: Ricky Apriliansyah
+Description: Premium WordPress News Theme
+Version: 1.0
+Text Domain: gesahan-news-pro
+*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f4f4f4;
+
+    color:#222;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+.container{
+
+    width:1400px;
+
+    max-width:95%;
+
+    margin:auto;
+
+}

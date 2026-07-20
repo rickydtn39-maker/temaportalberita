@@ -1,0 +1,173 @@
+@media(max-width:1200px){
+
+    .single-layout{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:992px){
+
+    .mobile-menu-toggle{
+        display:block;
+    }
+
+    .main-nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:#fff;
+        display:none;
+        padding:20px;
+        border-top:1px solid #eee;
+        box-shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+
+    .main-nav.mobile-active{
+        display:block;
+    }
+
+    .menu{
+        flex-direction:column;
+        gap:15px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .single-title{
+        font-size:28px;
+    }
+
+    .single-post{
+        padding:20px;
+    }
+
+    .author-box{
+        flex-direction:column;
+    }
+
+    .related-grid{
+        grid-template-columns:1fr;
+    }
+
+    .post-navigation{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .single-meta{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .single-title{
+        font-size:24px;
+    }
+
+}
+@media(max-width:768px){
+
+    .category-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+@media(max-width:992px){
+
+    .hero-news{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-main img{
+
+        height:350px;
+
+    }
+
+    .hero-overlay h2{
+
+        font-size:28px;
+
+    }
+
+}
+@media(max-width:768px){
+
+    .main-menu{
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+        gap:18px;
+
+        padding:0 15px;
+
+    }
+
+}
+@media(max-width:992px){
+
+    .footer-top{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer-top{
+
+        grid-template-columns:1fr;
+
+        gap:30px;
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .latest-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .latest-item{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .latest-content h3{
+
+        font-size:18px;
+
+    }
+
+}

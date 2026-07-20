@@ -1,0 +1,404 @@
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.trending-widget{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+.trending-list{
+
+    padding:10px 20px 20px;
+
+}
+
+.trending-item{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.trending-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.trending-number{
+
+    width:42px;
+
+    height:42px;
+
+    min-width:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#d60000;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:800;
+
+}
+
+.trending-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.trending-content a{
+
+    color:#111;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    line-height:1.5;
+
+}
+
+.trending-content a:hover{
+
+    color:#d60000;
+
+}
+
+.trending-content span{
+
+    color:#888;
+
+    font-size:12px;
+
+}
+
+.sidebar-card{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+}
+
+.sidebar-card img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+.social-widget{
+
+    padding:20px;
+
+}
+
+.social-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.social-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.social-name{
+
+    font-weight:700;
+
+}
+
+.social-count{
+
+    color:#777;
+
+    font-size:13px;
+
+}
+/* =====================================================
+   SIDEBAR ADS
+===================================================== */
+
+.sidebar-ads{
+
+    background:#fff;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-top:25px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+}
+
+.ads-label{
+
+    display:block;
+
+    text-align:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    color:#777;
+
+    margin-bottom:12px;
+
+    letter-spacing:2px;
+
+}
+
+.sidebar-ads img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:8px;
+
+}
+
+/* =====================================================
+   TRENDING PREMIUM
+===================================================== */
+
+.trending-item{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.trending-item:last-child{
+
+    border:none;
+
+}
+
+.trending-number{
+
+    min-width:40px;
+
+    height:40px;
+
+    background:#d60000;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    font-weight:700;
+
+}
+
+.trending-content a{
+
+    color:#111;
+
+    font-weight:600;
+
+    line-height:1.6;
+
+}
+
+.trending-content a:hover{
+
+    color:#d60000;
+
+}
+
+/* =====================================================
+   PREMIUM TRENDING
+===================================================== */
+
+.trending-widget{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.trending-widget .sidebar-title{
+
+    background:#111;
+
+    color:#fff;
+
+    padding:20px 25px;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    border-bottom:3px solid #d60000;
+
+    text-transform:uppercase;
+
+}
+
+.trending-list{
+
+    padding:0;
+
+}
+
+.trending-item{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:flex-start;
+
+    padding:20px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.trending-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.trending-number{
+
+    min-width:42px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#d60000;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.trending-content{
+
+    display:flex;
+
+    gap:12px;
+
+    flex:1;
+
+}
+
+.trending-thumb img{
+
+    width:95px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:6px;
+
+}
+
+.trending-text h4{
+
+    margin:0 0 8px;
+
+    font-size:16px;
+
+    line-height:1.4;
+
+}
+
+.trending-text a{
+
+    color:#111;
+
+    text-decoration:none;
+
+}
+
+.trending-text a:hover{
+
+    color:#d60000;
+
+}
+
+.trending-time{
+
+    color:#777;
+
+    font-size:13px;
+
+}
