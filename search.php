@@ -13,20 +13,28 @@ get_header();
 <div class="gn-container">
     <div class="gn-layout">
 
-        <!-- Konten Utama: Fallback Grid Posting Default -->
+        <!-- Konten Utama: Daftar Hasil Pencarian -->
         <div class="gn-content">
             
             <header class="gn-section__header">
                 <div>
                     <h1 class="gn-section__title" style="font-size: 2.2rem;">
                         <?php 
-                        if (is_home() && !is_front_page()) {
-                            single_post_title();
-                        } else {
-                            esc_html_e('Semua Artikel', 'gesahan-news-pro'); 
-                        }
+                        printf(
+                            esc_html__('Hasil Pencarian: "%s"', 'gesahan-news-pro'),
+                            get_search_query()
+                        ); 
                         ?>
                     </h1>
+                    <p class="gn-section__description">
+                        <?php 
+                        global $wp_query;
+                        printf(
+                            esc_html__('Ditemukan %d artikel terkait kata kunci Anda.', 'gesahan-news-pro'),
+                            $wp_query->found_posts
+                        );
+                        ?>
+                    </p>
                 </div>
             </header>
 
@@ -61,7 +69,7 @@ get_header();
                                     </a>
                                 </h2>
 
-                                <!-- NARASI BERITA INDEX DEFAULT -->
+                                <!-- NARASI BERITA HALAMAN PENCARIAN -->
                                 <p class="gn-card__excerpt">
                                     <?php echo esc_html(wp_strip_all_tags(get_the_excerpt())); ?>
                                 </p>
@@ -87,7 +95,12 @@ get_header();
                 </div>
 
             <?php else : ?>
-                <p class="gn-empty"><?php esc_html_e('Belum ada artikel yang tersedia.', 'gesahan-news-pro'); ?></p>
+                <div class="gn-empty" style="text-align: center; padding: 48px 24px;">
+                    <p>Maaf, tidak ada artikel yang cocok dengan kata kunci tersebut.</p>
+                    <div style="margin-top: 24px; max-width: 480px; margin-inline: auto;">
+                        <?php get_search_form(); ?>
+                    </div>
+                </div>
             <?php endif; ?>
 
         </div>
@@ -95,7 +108,7 @@ get_header();
         <!-- Sidebar Modular Arsip -->
         <aside class="gn-sidebar">
             <div class="gn-widget">
-                <h3 class="gn-widget__title"><?php esc_html_e('Terpopuler', 'gesahan-news-pro'); ?></h3>
+                <h3 class="gn-widget__title">Terpopuler</h3>
                 <div class="gn-widget__list">
                     <?php
                     $trending = gesahan_get_trending_posts(5);
@@ -111,7 +124,7 @@ get_header();
                         endwhile;
                         wp_reset_postdata();
                     else :
-                        echo '<p class="gn-empty">' . esc_html__('Belum ada berita terpopuler.', 'gesahan-news-pro') . '</p>';
+                        echo '<p class="gn-empty">Belum ada berita terpopuler.</p>';
                     endif;
                     ?>
                 </div>

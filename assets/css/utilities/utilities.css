@@ -1,0 +1,35 @@
+/*
+=========================================================
+GESAHAN NEWS FRAMEWORK
+Global Utilities (Fully Standard Compliant)
+=========================================================
+*/
+
+/* Text Truncation */
+.gn-text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Standard compliant line clamping to resolve VS Code Warning */
+.gn-line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard Property Fallback */
+    overflow: hidden;
+}
+
+/* Visibility Helpers */
+@media (max-width: 768px) {
+    .gn-hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gn-show-mobile-only {
+        display: none !important;
+    }
+}

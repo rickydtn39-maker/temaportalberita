@@ -10,11 +10,13 @@ define('GESAHAN_FRAMEWORK_VERSION', '2.0.0-alpha.3');
 
 /*
 |--------------------------------------------------------------------------
-| Core
+| Core Requirements
 |--------------------------------------------------------------------------
 */
 
 require_once get_template_directory() . '/inc/core/query.php';
+require_once get_template_directory() . '/inc/core/customizer.php';
+require_once get_template_directory() . '/inc/core/seo.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -69,17 +71,27 @@ add_action('after_setup_theme', 'gesahan_setup');
 
 /*
 |--------------------------------------------------------------------------
-| Assets
+| Assets Enqueue (CSS & JS)
 |--------------------------------------------------------------------------
 */
 
 function gesahan_enqueue_assets(): void
 {
+    // Load Stylesheet Utama
     wp_enqueue_style(
         'gesahan-framework',
         get_template_directory_uri() . '/assets/css/app.css',
         [],
         filemtime(get_template_directory() . '/assets/css/app.css')
+    );
+
+    // Load JavaScript Utama
+    wp_enqueue_script(
+        'gesahan-app-js',
+        get_template_directory_uri() . '/assets/js/app.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/app.js'),
+        true
     );
 }
 

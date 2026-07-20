@@ -1,6 +1,7 @@
 /*
 =========================================================
 GESAHAN NEWS FRAMEWORK
+Main App Stylesheet
 =========================================================
 */
 
@@ -23,3 +24,5 @@ GESAHAN NEWS FRAMEWORK
 @import url("./components/card.css");
 @import url("./components/section.css");
 @import url("./components/hero.css");
+@import url("./components/ticker.css");
+@import url("./components/single-post.css");

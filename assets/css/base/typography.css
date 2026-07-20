@@ -1,14 +1,14 @@
 /*
 =========================================================
 GESAHAN NEWS FRAMEWORK
-
-Typography
-
+Base Typography (Premium Editorial Styling)
 =========================================================
 */
 
-body{
-    font-family:var(--gn-font-family);
+body {
+    font-family: var(--gn-font-sans);
+    line-height: var(--gn-line-height);
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -16,70 +16,46 @@ h2,
 h3,
 h4,
 h5,
-h6{
-
-    color:var(--gn-color-title);
-
-    font-weight:var(--gn-font-black);
-
-    line-height:1.1;
-
-    letter-spacing:-0.04em;
-
+h6 {
+    color: var(--gn-color-title);
+    font-family: var(--gn-font-serif); /* Mengaktifkan font Serif untuk seluruh Heading */
+    font-weight: var(--gn-font-black);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-top: 0;
 }
 
-h1{
-
-    font-size:clamp(2.5rem,5vw,4.5rem);
-
+h1 {
+    font-size: clamp(2rem, 5vw, var(--gn-font-size-3xl));
 }
 
-h2{
-
-    font-size:clamp(2rem,4vw,3rem);
-
+h2 {
+    font-size: clamp(1.6rem, 4vw, var(--gn-font-size-2xl));
 }
 
-h3{
-
-    font-size:clamp(1.6rem,3vw,2.2rem);
-
+h3 {
+    font-size: clamp(1.3rem, 3vw, var(--gn-font-size-lg));
+    font-weight: var(--gn-font-bold);
 }
 
-h4{
-
-    font-size:1.5rem;
-
+h4 {
+    font-size: var(--gn-font-size-md);
+    font-weight: var(--gn-font-bold);
 }
 
-h5{
-
-    font-size:1.25rem;
-
+p {
+    color: var(--gn-color-text);
+    margin-bottom: var(--gn-space-4);
+    font-family: var(--gn-font-sans);
 }
 
-h6{
-
-    font-size:1rem;
-
+/* Text inline elements styling */
+strong {
+    font-weight: var(--gn-font-bold);
+    color: var(--gn-color-title);
 }
 
-p{
-
-    color:var(--gn-color-text);
-
-    margin-bottom:var(--gn-space-4);
-
-}
-
-strong{
-
-    font-weight:var(--gn-font-bold);
-
-}
-
-small{
-
-    font-size:var(--gn-font-size-sm);
-
+small {
+    font-size: var(--gn-font-size-xs);
+    color: var(--gn-color-meta);
 }

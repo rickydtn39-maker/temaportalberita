@@ -1,33 +1,64 @@
 /*
 =========================================================
-Hero
+GESAHAN NEWS FRAMEWORK
+Component: Hero Editorial Layout (Elite Grid Concept)
 =========================================================
 */
 
-.gn-hero{
-    margin:48px 0 64px;
+.gn-hero {
+    margin: var(--gn-space-5) 0 var(--gn-space-8);
 }
 
-.gn-hero__grid{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:24px;
+.gn-hero__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: var(--gn-space-6);
 }
 
 .gn-hero__main,
-.gn-hero__list{
-    display:flex;
-    flex-direction:column;
+.gn-hero__list {
+    display: flex;
+    flex-direction: column;
 }
 
-.gn-hero__list{
-    gap:16px;
+/* Sisi Kanan: List Berita Pendukung */
+.gn-hero__list {
+    gap: var(--gn-space-4);
+    background: var(--gn-color-surface);
+    border: 1px solid var(--gn-color-border);
+    border-radius: var(--gn-radius-lg);
+    padding: var(--gn-space-5);
+    box-shadow: var(--gn-shadow-sm);
+    justify-content: space-between;
 }
 
-@media (max-width:992px){
+/* Sisi Kiri: Berita Utama Besar (Big Coverage) */
+.gn-hero__main .gn-card {
+    border-radius: 0;
+}
 
-    .gn-hero__grid{
-        grid-template-columns:1fr;
+.gn-hero__main .gn-card__image {
+    aspect-ratio: 16 / 9; /* Rasio sinematik sempurna */
+    border-radius: var(--gn-radius-lg);
+}
+
+.gn-hero__main .gn-card__title {
+    font-family: var(--gn-font-serif);
+    font-size: clamp(1.4rem, 3vw, var(--gn-font-size-xl));
+    line-height: 1.2;
+    margin-bottom: var(--gn-space-3);
+    font-weight: var(--gn-font-black);
+}
+
+.gn-hero__main .gn-card__body {
+    padding: var(--gn-space-5) 0 0;
+}
+
+@media (max-width: 992px) {
+    .gn-hero__grid {
+        grid-template-columns: 1fr;
     }
-
+    .gn-hero__list {
+        padding: var(--gn-space-4);
+    }
 }

@@ -1,0 +1,111 @@
+/*
+=========================================================
+GESAHAN NEWS FRAMEWORK
+Component: Breaking News Ticker (Pure CSS Scroll)
+=========================================================
+*/
+
+.gn-ticker {
+    background: var(--gn-color-secondary) !important;
+    color: var(--gn-color-white) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: var(--gn-font-size-xs);
+    overflow: hidden;
+    height: 40px;
+}
+
+.gn-ticker__inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.gn-ticker__label {
+    background: var(--gn-color-primary) !important;
+    color: var(--gn-color-white) !important;
+    font-family: var(--gn-font-sans);
+    font-weight: var(--gn-font-black);
+    padding: 0 var(--gn-space-4);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--gn-space-2);
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* Efek Pulse Berkedip */
+.gn-ticker__pulse {
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: gn-pulse-animation 1.5s infinite;
+}
+
+@keyframes gn-pulse-animation {
+    0% { transform: scale(0.9); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.4; }
+    100% { transform: scale(0.9); opacity: 1; }
+}
+
+/* Animasi Scrolling Slider */
+.gn-ticker__slider {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.gn-ticker__track {
+    display: flex;
+    white-space: nowrap;
+    position: absolute;
+    animation: gn-ticker-scroll-animation 30s linear infinite;
+    padding-left: 100%; /* Mulai scroll dari tepi paling kanan slider */
+}
+
+.gn-ticker__track:hover {
+    animation-play-state: paused;
+}
+
+.gn-ticker__item {
+    padding: 0 var(--gn-space-6);
+    display: inline-flex;
+    align-items: center;
+}
+
+.gn-ticker__item a {
+    color: #e2e8f0 !important; /* Terang mencolok di atas background gelap */
+    font-family: var(--gn-font-sans);
+    font-weight: var(--gn-font-semibold);
+    transition: color var(--gn-transition);
+}
+
+.gn-ticker__item a:hover {
+    color: var(--gn-color-primary) !important;
+}
+
+.gn-ticker__item::after {
+    content: "•";
+    color: var(--gn-color-primary);
+    margin-left: var(--gn-space-6);
+    font-size: var(--gn-font-size-md);
+}
+
+@keyframes gn-ticker-scroll-animation {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .gn-ticker__label {
+        padding: 0 var(--gn-space-2);
+        font-size: 10px;
+    }
+}

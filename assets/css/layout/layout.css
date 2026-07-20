@@ -1,44 +1,84 @@
 /*
 =========================================================
 GESAHAN NEWS FRAMEWORK
-
-Layout Engine
-
+Layout Engine (Responsive, Fluid Grid & Ads Fluid System)
 =========================================================
 */
 
-.gn-site{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
+.gn-site {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.gn-main{
-    flex:1;
-    padding:48px 0;
+.gn-main {
+    flex: 1;
+    padding: var(--gn-space-5) 0;
 }
 
-.gn-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 340px;
-    gap:32px;
-    align-items:start;
+.gn-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: var(--gn-space-6);
+    align-items: start;
 }
 
-.gn-content{
-    min-width:0;
+.gn-content {
+    min-width: 0;
 }
 
-.gn-sidebar{
-    min-width:0;
+.gn-sidebar {
+    min-width: 0;
 }
 
-@media (max-width:1024px){
+/* 
+=========================================================
+Sistem Responsif Khusus Wadah Iklan (Header & Homepage Ads)
+Mencegah Iklan melebar merusak layout (No Horizontal Scrollbar Bug)
+=========================================================
+*/
+.gn-ad-container,
+.gn-home-ad-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
 
-    .gn-layout{
+/* Kotak Iklan Homepage (Area Kotak Hijau) */
+.gn-home-ad-banner {
+    margin-bottom: var(--gn-space-5);
+    background: var(--gn-color-surface);
+    border: 1px dashed var(--gn-color-border);
+    border-radius: var(--gn-radius-md);
+    padding: var(--gn-space-3);
+}
 
-        grid-template-columns:1fr;
+/* Memaksa elemen gambar / script iklan agar auto-scale responsif di Android & iOS */
+.gn-ad-container img,
+.gn-home-ad-banner img,
+.gn-ad-container iframe,
+.gn-home-ad-banner iframe {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin-inline: auto;
+}
 
+@media (max-width: 1024px) {
+    .gn-layout {
+        grid-template-columns: 1fr;
     }
+}
 
+@media (max-width: 768px) {
+    .gn-main {
+        padding: var(--gn-space-4) 0;
+    }
+    
+    .gn-home-ad-banner {
+        padding: var(--gn-space-2);
+        margin-bottom: var(--gn-space-4);
+    }
 }
