@@ -13,31 +13,44 @@ $homepage_ad = get_theme_mod('gesahan_ad_homepage_banner', '');
 
 ?>
 
-<div class="gn-container">
+<div class="gn-homepage-engine">
 
-    <!-- SLOT IKLAN BANNER UTAMA HOMEPAGE (Dinamis & Opsional - Area Kotak Hijau) -->
+    <!-- SLOT IKLAN BANNER UTAMA HOMEPAGE (Dinamis, Opsional & Glassmorphism container) -->
     <?php if (!empty($homepage_ad)) : ?>
-        <div class="gn-home-ad-banner">
-            <?php echo $homepage_ad; // Render script iklan, link html atau banner kustom ?>
+        <div class="gn-container">
+            <div class="gn-home-ad-banner">
+                <?php echo $homepage_ad; ?>
+            </div>
         </div>
     <?php endif; ?>
 
-    <?php
-    // 1. Hero Grid Module (Headline & Side list)
-    get_template_part('template-parts/sections/hero');
+    <div class="gn-container">
+        <?php
+        // 1. Hero Grid Module (Headline & Side list Terpopuler)
+        get_template_part('template-parts/sections/hero');
 
-    // 2. Homepage Category Blocks (Kategori pilihan via Customizer)
-    get_template_part('template-parts/sections/category-blocks');
+        // 2. 🔥 Section Trending Strip (Priority 2 - Horizontal Clean Grid)
+        get_template_part('template-parts/sections/trending');
 
-    // 3. Premium Video Section Block
-    get_template_part('template-parts/sections/video');
+        // 3. ⭐ Section Editor's Pick (Priority 2 - Premium Asymmetric Grid)
+        get_template_part('template-parts/sections/editors-pick');
 
-    // 4. Latest News Module
-    get_template_part('template-parts/sections/latest');
+        // 4. Homepage Category Blocks (Kategori pilihan via Customizer)
+        get_template_part('template-parts/sections/category-blocks');
 
-    // 5. Premium Newsletter subscription box
-    get_template_part('template-parts/sections/newsletter');
-    ?>
+        // 5. Premium Video Section Block (Modern overlay & Dark background)
+        get_template_part('template-parts/sections/video');
+
+        // 6. Latest News Module (Sleek List - Anti-Duplication)
+        get_template_part('template-parts/sections/latest');
+
+        // Tambahkan baris pemanggilan ini di front-page.php di mana saja Anda suka:
+        get_template_part('template-parts/sections/ai-summary');
+
+        // 7. Premium Newsletter subscription box (Linear Style)
+        get_template_part('template-parts/sections/newsletter');
+        ?>
+    </div>
 
 </div>
 

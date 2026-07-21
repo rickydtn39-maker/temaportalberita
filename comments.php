@@ -37,13 +37,13 @@ if (post_password_required()) {
             ?>
         </h3>
 
-        <!-- Daftar Komentar -->
+        <!-- Daftar Komentar (Discussion Thread App Concept) -->
         <ol class="gn-comments-list">
             <?php
             wp_list_comments([
                 'style'       => 'ol',
                 'short_ping'  => true,
-                'avatar_size' => 48,
+                'avatar_size' => 44,
             ]);
             ?>
         </ol>
@@ -66,17 +66,17 @@ if (post_password_required()) {
     <?php endif; ?>
 
     <?php
-    // Kustomisasi Form Komentar agar Mengikuti Standard UI Framework
+    // Kustomisasi Form Komentar agar Mengikuti Standard UI Framework Produk Premium (Linear Style)
     comment_form([
         'class_form'         => 'gn-comment-form',
         'title_reply_class'  => 'gn-reply-title',
         'submit_button'      => '<button name="%1$s" type="submit" id="%2$s" class="%3$s">%4$s</button>',
         'class_submit'       => 'gn-comment-submit-btn',
-        'comment_field'      => '<div class="gn-comment-form-group"><label for="comment">' . esc_html__('Komentar', 'gesahan-news-pro') . ' *</label><textarea id="comment" name="comment" cols="45" rows="6" required></textarea></div>',
+        'comment_field'      => '<div class="gn-comment-form-group"><label for="comment">' . esc_html__('Pesan Komentar', 'gesahan-news-pro') . ' *</label><textarea id="comment" name="comment" cols="45" rows="6" placeholder="' . esc_attr__('Tulis pesan komentar diskusi Anda secara bijak di sini...', 'gesahan-news-pro') . '" required></textarea></div>',
         'fields'             => [
-            'author' => '<div class="gn-comment-fields-grid"><div class="gn-comment-form-group"><label for="author">' . esc_html__('Nama', 'gesahan-news-pro') . ' *</label><input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30" required /></div>',
-            'email'  => '<div class="gn-comment-form-group"><label for="email">' . esc_html__('Email', 'gesahan-news-pro') . ' *</label><input id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30" required /></div>',
-            'url'    => '<div class="gn-comment-form-group"><label for="url">' . esc_html__('Website', 'gesahan-news-pro') . '</label><input id="url" name="url" type="url" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" /></div></div>',
+            'author' => '<div class="gn-comment-fields-grid"><div class="gn-comment-form-group"><label for="author">' . esc_html__('Nama Lengkap', 'gesahan-news-pro') . ' *</label><input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30" placeholder="' . esc_attr__('Nama Anda', 'gesahan-news-pro') . '" required /></div>',
+            'email'  => '<div class="gn-comment-form-group"><label for="email">' . esc_html__('Alamat Email', 'gesahan-news-pro') . ' *</label><input id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30" placeholder="' . esc_attr__('Alamat email aktif', 'gesahan-news-pro') . '" required /></div>',
+            'url'    => '<div class="gn-comment-form-group"><label for="url">' . esc_html__('Website (Opsional)', 'gesahan-news-pro') . '</label><input id="url" name="url" type="url" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" placeholder="https://" /></div></div>',
         ],
     ]);
     ?>

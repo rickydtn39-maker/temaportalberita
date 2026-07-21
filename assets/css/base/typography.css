@@ -1,14 +1,13 @@
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-Base Typography (Premium Editorial Styling)
+GESAHAN NEWS FRAMEWORK - TYPOGRAPHY STYLESHEET
+Premium Typography Pairing & Strict Hierarchy
 =========================================================
 */
 
 body {
     font-family: var(--gn-font-sans);
-    line-height: var(--gn-line-height);
-    -webkit-font-smoothing: antialiased;
+    line-height: var(--gn-line-height-base);
 }
 
 h1,
@@ -18,44 +17,51 @@ h4,
 h5,
 h6 {
     color: var(--gn-color-title);
-    font-family: var(--gn-font-serif); /* Mengaktifkan font Serif untuk seluruh Heading */
+    font-family: var(--gn-font-serif);
     font-weight: var(--gn-font-black);
-    line-height: 1.15;
-    letter-spacing: -0.03em;
+    line-height: var(--gn-line-height-tight);
+    letter-spacing: -0.04em; /* Strict negative tracking */
     margin-top: 0;
+    transition: color 0.4s ease;
 }
 
+/* Headline Hero Jumbo */
 h1 {
-    font-size: clamp(2rem, 5vw, var(--gn-font-size-3xl));
+    font-size: var(--gn-font-size-hero);
+    font-weight: var(--gn-font-black);
 }
 
+/* Editorial Headers */
 h2 {
-    font-size: clamp(1.6rem, 4vw, var(--gn-font-size-2xl));
+    font-size: clamp(1.625rem, 4vw, var(--gn-font-size-3xl));
 }
 
 h3 {
-    font-size: clamp(1.3rem, 3vw, var(--gn-font-size-lg));
-    font-weight: var(--gn-font-bold);
+    font-size: clamp(1.25rem, 3vw, var(--gn-font-size-2xl));
 }
 
 h4 {
-    font-size: var(--gn-font-size-md);
-    font-weight: var(--gn-font-bold);
+    font-size: var(--gn-font-size-xl);
 }
 
 p {
     color: var(--gn-color-text);
-    margin-bottom: var(--gn-space-4);
     font-family: var(--gn-font-sans);
+    margin-bottom: var(--gn-space-3);
 }
 
-/* Text inline elements styling */
+/* Micro & Meta Typography styling */
+small,
+.gn-meta-info {
+    font-family: var(--gn-font-sans);
+    font-size: var(--gn-font-size-xs);
+    font-weight: var(--gn-font-medium);
+    color: var(--gn-color-meta);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
 strong {
     font-weight: var(--gn-font-bold);
     color: var(--gn-color-title);
-}
-
-small {
-    font-size: var(--gn-font-size-xs);
-    color: var(--gn-color-meta);
 }

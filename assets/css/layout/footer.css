@@ -1,103 +1,305 @@
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-Layout: Footer Component (Premium Dark Mode Adaptive)
+GESAHAN NEWS FRAMEWORK - SITEMAP FOOTER SYSTEM
+Borderless Luxury Styling (Stripe & Linear Concept)
 =========================================================
 */
 
 .gn-footer {
-    background: #090d16;
+    background: #030508; /* Deep Midnight space black */
     color: #94a3b8;
     padding: var(--gn-space-8) 0 var(--gn-space-6);
     margin-top: var(--gn-space-10);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: var(--gn-font-size-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.02); /* Sangat tipis & samar */
 }
 
-.gn-footer .gn-container {
+/* Row 1: Sitemap Grid Columns */
+.gn-footer__sitemap {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: var(--gn-space-6);
+    padding-bottom: var(--gn-space-6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.gn-footer__col {
     display: flex;
     flex-direction: column;
-    gap: var(--gn-space-6);
-    align-items: center;
-    text-align: center;
+    gap: var(--gn-space-3);
 }
 
-/* Footer Brand area */
-.gn-footer__brand {
-    max-width: 500px;
+.gn-footer__col--brand {
+    padding-right: var(--gn-space-5);
 }
 
 .gn-footer__logo {
-    color: var(--gn-color-white);
-    font-size: 1.5rem;
+    color: var(--gn-color-white) !important;
+    font-family: var(--gn-font-serif);
+    font-size: 1.75rem;
     font-weight: var(--gn-font-black);
-    text-transform: uppercase;
     letter-spacing: -1px;
-    margin-bottom: var(--gn-space-2);
-    display: inline-block;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
-.gn-footer__tagline {
-    font-size: var(--gn-font-size-xs);
-    color: #64748b;
+.gn-footer__about {
+    font-size: var(--gn-font-size-sm);
     line-height: 1.6;
-    margin-bottom: 0;
+    color: #6b7280;
+    margin: 0;
 }
 
-/* Footer Credits & Bottom copyright */
+.gn-footer__socials {
+    display: flex;
+    gap: var(--gn-space-3);
+    margin-top: var(--gn-space-1);
+}
+
+.gn-footer__socials a {
+    font-size: 11px;
+    font-weight: var(--gn-font-bold);
+    color: #4b5563;
+    transition: var(--gn-transition-smooth);
+}
+
+.gn-footer__socials a:hover {
+    color: var(--gn-color-primary) !important;
+    transform: translateY(-1px);
+}
+
+.gn-footer__title {
+    font-family: var(--gn-font-sans);
+    font-size: var(--gn-font-size-xs);
+    font-weight: var(--gn-font-black);
+    color: var(--gn-color-white);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.gn-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gn-space-2);
+}
+
+.gn-footer__links a {
+    font-size: var(--gn-font-size-sm);
+    color: #6b7280;
+    transition: var(--gn-transition-smooth);
+}
+
+.gn-footer__links a:hover {
+    color: var(--gn-color-white) !important;
+    padding-left: 4px;
+}
+
+/* Row 2: Bottom Copyright & Legal Links */
 .gn-footer__bottom {
-    width: 100%;
-    padding-top: var(--gn-space-5);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: var(--gn-space-5);
     flex-wrap: wrap;
     gap: var(--gn-space-4);
 }
 
-.gn-footer__bottom p {
-    margin-bottom: 0;
-    color: #64748b;
+.gn-footer__legal p {
     font-size: var(--gn-font-size-xs);
-}
-
-/* Quick Navigation Links on Footer */
-.gn-footer__nav {
-    display: flex;
-    gap: var(--gn-space-4);
-    list-style: none;
-    padding: 0;
+    color: #4b5563;
     margin: 0;
 }
 
-.gn-footer__nav a {
-    color: #64748b;
-    font-weight: var(--gn-font-semibold);
+.gn-footer__legal strong {
+    color: #94a3b8;
+}
+
+.gn-footer__legal-links {
+    display: flex;
+    align-items: center;
+    gap: var(--gn-space-2);
+    flex-wrap: wrap;
+}
+
+.gn-footer__legal-links a {
     font-size: var(--gn-font-size-xs);
+    color: #4b5563;
 }
 
-.gn-footer__nav a:hover {
-    color: var(--gn-color-primary);
+.gn-footer__legal-links a:hover {
+    color: var(--gn-color-primary) !important;
 }
 
-body.gn-dark-mode .gn-footer {
-    background: #060911;
+.gn-footer__legal-divider {
+    color: rgba(255, 255, 255, 0.05);
+    font-size: 10px;
 }
 
-@media (max-width: 768px) {
-    .gn-footer .gn-container {
+/* Responsif breakpoint */
+@media (max-width: 992px) {
+    .gn-footer__sitemap {
+        grid-template-columns: 1fr;
         gap: var(--gn-space-5);
     }
     
+    .gn-footer__col--brand {
+        padding-right: 0;
+    }
+
     .gn-footer__bottom {
         flex-direction: column;
         text-align: center;
     }
+}/*
+=========================================================
+GESAHAN NEWS FRAMEWORK - SITEMAP FOOTER SYSTEM
+Borderless Luxury Styling (Stripe & Linear Concept)
+=========================================================
+*/
+
+.gn-footer {
+    background: #030508; /* Deep Midnight space black */
+    color: #94a3b8;
+    padding: var(--gn-space-8) 0 var(--gn-space-6);
+    margin-top: var(--gn-space-10);
+    border-top: 1px solid rgba(255, 255, 255, 0.02); /* Sangat tipis & samar */
+}
+
+/* Row 1: Sitemap Grid Columns */
+.gn-footer__sitemap {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: var(--gn-space-6);
+    padding-bottom: var(--gn-space-6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.gn-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gn-space-3);
+}
+
+.gn-footer__col--brand {
+    padding-right: var(--gn-space-5);
+}
+
+.gn-footer__logo {
+    color: var(--gn-color-white) !important;
+    font-family: var(--gn-font-serif);
+    font-size: 1.75rem;
+    font-weight: var(--gn-font-black);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.gn-footer__about {
+    font-size: var(--gn-font-size-sm);
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+}
+
+.gn-footer__socials {
+    display: flex;
+    gap: var(--gn-space-3);
+    margin-top: var(--gn-space-1);
+}
+
+.gn-footer__socials a {
+    font-size: 11px;
+    font-weight: var(--gn-font-bold);
+    color: #4b5563;
+    transition: var(--gn-transition-smooth);
+}
+
+.gn-footer__socials a:hover {
+    color: var(--gn-color-primary) !important;
+    transform: translateY(-1px);
+}
+
+.gn-footer__title {
+    font-family: var(--gn-font-sans);
+    font-size: var(--gn-font-size-xs);
+    font-weight: var(--gn-font-black);
+    color: var(--gn-color-white);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.gn-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gn-space-2);
+}
+
+.gn-footer__links a {
+    font-size: var(--gn-font-size-sm);
+    color: #6b7280;
+    transition: var(--gn-transition-smooth);
+}
+
+.gn-footer__links a:hover {
+    color: var(--gn-color-white) !important;
+    padding-left: 4px;
+}
+
+/* Row 2: Bottom Copyright & Legal Links */
+.gn-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--gn-space-5);
+    flex-wrap: wrap;
+    gap: var(--gn-space-4);
+}
+
+.gn-footer__legal p {
+    font-size: var(--gn-font-size-xs);
+    color: #4b5563;
+    margin: 0;
+}
+
+.gn-footer__legal strong {
+    color: #94a3b8;
+}
+
+.gn-footer__legal-links {
+    display: flex;
+    align-items: center;
+    gap: var(--gn-space-2);
+    flex-wrap: wrap;
+}
+
+.gn-footer__legal-links a {
+    font-size: var(--gn-font-size-xs);
+    color: #4b5563;
+}
+
+.gn-footer__legal-links a:hover {
+    color: var(--gn-color-primary) !important;
+}
+
+.gn-footer__legal-divider {
+    color: rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+}
+
+/* Responsif breakpoint */
+@media (max-width: 992px) {
+    .gn-footer__sitemap {
+        grid-template-columns: 1fr;
+        gap: var(--gn-space-5);
+    }
     
-    .gn-footer__nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: var(--gn-space-3);
+    .gn-footer__col--brand {
+        padding-right: 0;
+    }
+
+    .gn-footer__bottom {
+        flex-direction: column;
+        text-align: center;
     }
 }

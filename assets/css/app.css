@@ -1,26 +1,26 @@
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-Main App Stylesheet
+GESAHAN NEWS FRAMEWORK - MAIN APP STYLESHEET
+Premium Fluid & Clean Visual Architecture (Apple & Linear Concept)
 =========================================================
 */
 
-/* BASE */
+/* 1. BASE FOUNDATION */
 @import url("./base/tokens.css");
 @import url("./base/reset.css");
 @import url("./base/typography.css");
 
-/* UTILITIES */
+/* 2. GLOBAL UTILITIES */
 @import url("./utilities/utilities.css");
 
-/* LAYOUT */
+/* 3. RESPONSIVE LAYOUT ENGINE */
 @import url("./layout/container.css");
 @import url("./layout/grid.css");
 @import url("./layout/layout.css");
 @import url("./layout/header.css");
 @import url("./layout/footer.css");
 
-/* COMPONENTS */
+/* 4. PREMIUM COMPONENT CORE */
 @import url("./components/card.css");
 @import url("./components/section.css");
 @import url("./components/hero.css");

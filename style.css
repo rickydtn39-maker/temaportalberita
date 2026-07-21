@@ -1,52 +1,55 @@
 /*
-Theme Name: Gesahan News Pro
-Theme URI: https://gesahannusantara.com
+Theme Name: Nusantara One
+Theme URI: https://nusantaraone.test
 Author: Ricky Apriliansyah
-Author URI: https://gesahannusantara.com
-Description: Premium Editorial WordPress Theme for Modern News Portal.
-Version: 2.0.0-alpha.3
+Author URI: https://nusantaraone.test
+Description: Nusantara One - Premium Digital News Platform. Built with Glassmorphism UI, AI-First layout engine, and ultra-high speed architecture.
+Version: 2.0.0
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: gesahan-news-pro
-Tags: news, blog, magazine, editor, responsive, custom-logo, featured-images
+Text Domain: nusantara-one
+Tags: news, blog, magazine, editor, responsive, custom-logo, featured-images, dark-mode, post-formats
 */
 
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-Main Fallback & Standard Definition
+NUSANTARA ONE FRAMEWORK
+Main Fallback & Genesis Base Styles
 =========================================================
 */
 
-/* Reset dasar agar selaras sebelum app.css selesai di-load */
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
     box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     margin: 0;
-    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #f5f7fb;
-    color: #374151;
+    font-family: var(--gn-font-sans);
+    background-color: var(--gn-color-body);
+    color: var(--gn-color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Skip to content helper */
+/* Accessibility screen-readers skip link */
 .gn-skip-link {
     position: absolute;
     left: -999px;
     top: 12px;
     z-index: 99999;
-    background: #d72638;
+    background: #d90429;
     color: #ffffff;
     padding: 10px 18px;
     border-radius: 6px;

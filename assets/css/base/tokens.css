@@ -1,44 +1,42 @@
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-Design Tokens (Elite Editorial Version with Robust Dark Scheme)
+GESAHAN NEWS FRAMEWORK - DESIGN SYSTEM TOKENS
+Elite Product DNA (Apple & Linear Inspired Edition)
 =========================================================
 */
 
 :root {
-    /* Brand Colors (Luxury Editorial Palette) */
-    --gn-color-primary: #d72638;
+    /* --- COLOR PALETTE --- */
+    /* Brand Accent Colors */
+    --gn-color-primary: #d72638; /* Cherry Red - Hanya untuk aksen & interaksi penting */
     --gn-color-primary-hover: #b91c2d;
-    --gn-color-secondary: #090d16;
-    --gn-color-dark: #0f172a;
-    --gn-color-success: #10b981;
-    --gn-color-warning: #f59e0b;
-    --gn-color-danger: #ef4444;
-    --gn-color-white: #ffffff;
-    --gn-color-black: #000000;
-
-    /* Semantic Light Mode Colors (Default) */
-    --gn-color-body: #f8fafc;       
+    --gn-color-primary-glow: rgba(215, 38, 56, 0.15);
+    
+    /* Semantic Colors: LIGHT MODE (Default) */
+    --gn-color-body: #f8f9fa; /* Sangat bersih, bernapas */
     --gn-color-surface: #ffffff;
-    --gn-color-title: #0f172a;      
-    --gn-color-text: #334155;       
-    --gn-color-meta: #64748b;       
-    --gn-color-border: #e2e8f0;     
+    --gn-color-surface-hover: #fcfcfd;
+    --gn-color-title: #090d16; /* Deep Midnight Ink */
+    --gn-color-text: #374151; /* Charcoal Slate */
+    --gn-color-meta: #6b7280; /* Muted Cool Grey */
+    --gn-color-border: rgba(9, 13, 22, 0.04); /* Transparan super tipis, minim garis */
+    --gn-color-border-glow: rgba(9, 13, 22, 0.02);
 
-    /* Typography System (Premium Font Pairing) */
-    --gn-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --gn-font-serif: "Merriweather", Georgia, "Times New Roman", serif; 
+    /* --- TYPOGRAPHY SYSTEM --- */
+    --gn-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    --gn-font-serif: "Merriweather", Georgia, "Times New Roman", serif;
     --gn-font-family: var(--gn-font-sans);
 
-    /* Font Sizes Scale */
-    --gn-font-size-xs: 0.75rem;
-    --gn-font-size-sm: 0.875rem;
-    --gn-font-size-base: 1rem;
-    --gn-font-size-md: 1.125rem;
-    --gn-font-size-lg: 1.5rem;
-    --gn-font-size-xl: 2rem;
-    --gn-font-size-2xl: 2.75rem;
-    --gn-font-size-3xl: 3.75rem;
+    /* Fluid Sizing Scale (Responsive by Default) */
+    --gn-font-size-xs: 0.75rem;     /* 12px */
+    --gn-font-size-sm: 0.875rem;    /* 14px */
+    --gn-font-size-base: 1rem;      /* 16px */
+    --gn-font-size-md: 1.125rem;    /* 18px */
+    --gn-font-size-lg: 1.25rem;     /* 20px */
+    --gn-font-size-xl: 1.5rem;      /* 24px */
+    --gn-font-size-2xl: 2.25rem;    /* 36px */
+    --gn-font-size-3xl: 3rem;       /* 48px */
+    --gn-font-size-hero: clamp(2.125rem, 5.5vw, 4.375rem); /* 34px - 70px Fluid Scale */
 
     /* Font Weights */
     --gn-font-light: 300;
@@ -47,46 +45,61 @@ Design Tokens (Elite Editorial Version with Robust Dark Scheme)
     --gn-font-semibold: 600;
     --gn-font-bold: 700;
     --gn-font-black: 900;
-    --gn-line-height: 1.8;
+    
+    --gn-line-height-tight: 1.15;
+    --gn-line-height-base: 1.7;
 
-    /* Elegant Spacing System */
+    /* --- SPACING SYSTEM (Bernapas & Luas) --- */
     --gn-space-1: 4px;
     --gn-space-2: 8px;
-    --gn-space-3: 12px;
-    --gn-space-4: 16px;
-    --gn-space-5: 24px;
-    --gn-space-6: 32px;
-    --gn-space-7: 48px;
-    --gn-space-8: 64px;
-    --gn-space-9: 80px;
-    --gn-space-10: 96px;
+    --gn-space-3: 16px;
+    --gn-space-4: 24px;
+    --gn-space-5: 32px;
+    --gn-space-6: 48px;  /* Spacing antar sub-elemen */
+    --gn-space-7: 64px;  /* Spacing antar section kecil */
+    --gn-space-8: 80px;  /* Spacing antar section medium */
+    --gn-space-9: 120px; /* Spacing antar section premium raksasa */
 
-    /* Borders & Radius */
-    --gn-radius-sm: 4px;
-    --gn-radius-md: 8px;
-    --gn-radius-lg: 12px;
-    --gn-radius-round: 999px;
+    /* --- SHADOW SYSTEM (Sangat Halus & Elegan) --- */
+    --gn-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.015);
+    --gn-shadow-md: 0 12px 32px rgba(9, 13, 22, 0.03);
+    --gn-shadow-lg: 0 24px 64px rgba(9, 13, 22, 0.05);
+    --gn-shadow-premium: 0 40px 100px rgba(9, 13, 22, 0.08);
+    --gn-shadow-glow: 0 0 40px rgba(215, 38, 56, 0.05);
 
-    /* Shadows */
-    --gn-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.02);
-    --gn-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
-    --gn-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.04), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+    /* --- BORDER RADIUS --- */
+    --gn-radius-sm: 6px;
+    --gn-radius-md: 12px;
+    --gn-radius-lg: 24px; /* Untuk Card Utama & Hero cinematic */
+    --gn-radius-round: 9999px;
 
-    /* Layout Containers */
-    --gn-container: 1240px; 
-    --gn-transition: cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    /* --- ANIMATIONS & INTERACTIVE TRANSITIONS --- */
+    /* Menggunakan kurva Apple/Linear: cubic-bezier(0.16, 1, 0.3, 1) */
+    --gn-transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --gn-transition-lazy: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* --- CONTAINERS & SYSTEM LIMITS --- */
+    --gn-container: 1360px; /* Lebih lebar, modern */
 }
 
 /* 
-   SISTEM OVERRIDE DARK MODE YANG SANGAT KUAT (ROBUST SPECIFICITY)
-   Menjamin perubahan warna turun secara total ke seluruh elemen anak
+=========================================================
+SEMANTIC DARK MODE SYSTEM (ROBUST SPECIFICITY OVERRIDE)
+=========================================================
 */
 body.gn-dark-mode {
-    --gn-color-body: #090d16 !important;
-    --gn-color-surface: #0f172a !important;
-    --gn-color-title: #f8fafc !important;
-    --gn-color-text: #cbd5e1 !important;
-    --gn-color-meta: #94a3b8 !important;
-    --gn-color-border: #1e293b !important;
-    --gn-color-secondary: #05070a !important;
+    --gn-color-body: #030508 !important; /* Deep space black */
+    --gn-color-surface: #090c13 !important; /* Apple Glass surface */
+    --gn-color-surface-hover: #0d111b !important;
+    --gn-color-title: #f3f4f6 !important;
+    --gn-color-text: #9ca3af !important;
+    --gn-color-meta: #4b5563 !important;
+    --gn-color-border: rgba(255, 255, 255, 0.03) !important;
+    --gn-color-border-glow: rgba(255, 255, 255, 0.01) !important;
+    
+    --gn-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --gn-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+    --gn-shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
+    --gn-shadow-premium: 0 40px 100px rgba(0, 0, 0, 0.8);
+    --gn-shadow-glow: 0 0 40px rgba(215, 38, 56, 0.1);
 }

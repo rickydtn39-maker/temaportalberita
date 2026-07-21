@@ -8,7 +8,6 @@ if (!defined('ABSPATH')) {
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,23 +18,18 @@ if (!defined('ABSPATH')) {
             const state = localStorage.getItem('gn-dark-mode');
             if (state === 'enabled' || (!state && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('gn-dark-mode-applied');
-                document.write('<style>body{background-color:#090d16 !important; color:#cbd5e1 !important;}</style>');
+                document.write('<style>body{background-color:#030508 !important;color:#cbd5e1 !important;}</style>');
             }
         })();
     </script>
-
     <?php wp_head(); ?>
 </head>
-
 <body <?php body_class(); ?>>
-
-<!-- Sinkronisasi instan state class dark-mode pada tag body setelah render dimulai -->
 <script>
     if (document.documentElement.classList.contains('gn-dark-mode-applied')) {
         document.body.classList.add('gn-dark-mode');
     }
 </script>
-
 <?php wp_body_open(); ?>
 
 <!-- Link Aksesibilitas (Skip Link untuk pembaca layar/screen-readers) -->
@@ -44,56 +38,20 @@ if (!defined('ABSPATH')) {
 </a>
 
 <div class="gn-site">
-
-    <!-- TIER 1: TOP BAR (Utility & Social Area) -->
-    <div class="gn-topbar">
-        <div class="gn-container">
-            <div class="gn-topbar__inner">
-                
-                <div class="gn-topbar__left">
-                    <span class="gn-topbar__date">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        <?php echo esc_html(wp_date('l, d F Y')); ?>
-                    </span>
-                    <span class="gn-topbar__divider">|</span>
-                    <span class="gn-topbar__trending-label"><?php esc_html_e('TRENDING:', 'gesahan-news-pro'); ?></span>
-                    <div class="gn-topbar__trending-topics">
-                        <?php
-                        $tags = get_tags(['orderby' => 'count', 'order' => 'DESC', 'number' => 3]);
-                        if (!empty($tags)) {
-                            foreach ($tags as $tag) {
-                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '">#' . esc_html($tag->name) . '</a>';
-                            }
-                        } else {
-                            echo '<span style="opacity:0.5;">#News #Technology #Lifestyle</span>';
-                        }
-                        ?>
-                    </div>
-                </div>
-
-                <div class="gn-topbar__right">
-                    <button class="gn-dark-mode-toggle" aria-label="Ganti Mode Tampilan" type="button">
-                        <svg class="gn-sun-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                        <svg class="gn-moon-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <!-- TIER 1: TOP BAR (Utility & Trending Area) -->
+    <?php get_template_part('template-parts/header/top-bar'); ?>
 
     <!-- TIER 2: BRAND HEADER AREA -->
     <header class="gn-header">
         <div class="gn-container">
             <div class="gn-header__inner">
-
                 <div class="gn-header__brand-box">
                     <a class="gn-logo" href="<?php echo esc_url(home_url('/')); ?>">
                         <?php bloginfo('name'); ?>
                     </a>
                     <p class="gn-header__tagline"><?php bloginfo('description'); ?></p>
                 </div>
-
+                
                 <!-- Kolom Iklan Header Dinamis & Opsional -->
                 <?php 
                 $ad_header = get_theme_mod('gesahan_ad_header', '');
@@ -101,69 +59,106 @@ if (!defined('ABSPATH')) {
                 ?>
                     <div class="gn-header__ad-space gn-hide-mobile">
                         <div class="gn-ad-container">
-                            <?php echo $ad_header; // Render raw ad script/html ?>
+                            <?php echo $ad_header; ?>
                         </div>
                     </div>
                 <?php endif; ?>
-
             </div>
         </div>
     </header>
 
-    <!-- TIER 3: DEDICATED CATEGORY NAVIGATION BAR -->
+    <!-- TIER 3: DEDICATED NAVIGATION BAR WITH MEGA MENU -->
     <nav class="gn-nav" id="gnNavBar">
         <div class="gn-container">
             <div class="gn-nav__inner">
                 
                 <button class="gn-menu-toggle" aria-label="Buka Menu" aria-expanded="false" type="button">
-                    <svg class="gn-hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                    <svg class="gn-close-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <svg class="gn-hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <svg class="gn-close-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
 
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="gn-nav__home-icon" aria-label="Home">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 </a>
 
                 <div class="gn-nav__categories-wrapper">
                     <ul class="gn-category-menu">
+                        <!-- Item Kategori Standar -->
                         <?php
                         $categories = get_categories([
-                            'orderby'    => 'count',
-                            'order'      => 'DESC',
-                            'number'     => 8, 
+                            'orderby' => 'count',
+                            'order' => 'DESC',
+                            'number' => 6, 
                             'hide_empty' => true
                         ]);
-
-                        $current_cat_id = 0;
-                        if (is_category()) {
-                            $current_cat_id = get_queried_object_id();
-                        } elseif (is_single()) {
-                            $post_cats = get_the_category();
-                            if (!empty($post_cats)) {
-                                $current_cat_id = $post_cats[0]->term_id;
-                            }
-                        }
-
                         if (!empty($categories)) :
                             foreach ($categories as $cat) :
-                                $active_class = ($cat->term_id === $current_cat_id) ? 'gn-cat-item--active' : '';
-                                ?>
-                                <li class="gn-cat-item <?php echo esc_attr($active_class); ?>">
-                                    <a href="<?php echo esc_url(get_category_link($cat->term_id)); ?>">
-                                        <?php echo esc_html($cat->name); ?>
-                                    </a>
-                                </li>
-                                <?php
+                        ?>
+                            <li class="gn-cat-item">
+                                <a href="<?php echo esc_url(get_category_link($cat->term_id)); ?>">
+                                    <?php echo esc_html($cat->name); ?>
+                                </a>
+                            </li>
+                        <?php
                             endforeach;
                         endif;
                         ?>
+
+                        <!-- TRIGGER MEGA MENU DAERAH (Visual DNA) -->
+                        <li class="gn-cat-item gn-has-mega">
+                            <a href="#" class="gn-mega-trigger">
+                                <?php esc_html_e('Daerah', 'gesahan-news-pro'); ?>
+                                <svg class="gn-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </a>
+                            
+                            <!-- MEGA MENU DROPDOWN PANEL -->
+                            <div class="gn-mega-menu">
+                                <div class="gn-mega-grid">
+                                    <div class="gn-mega-column">
+                                        <h4 class="gn-mega-title"><?php esc_html_e('SUMATERA', 'gesahan-news-pro'); ?></h4>
+                                        <ul class="gn-mega-list">
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'aceh', home_url('/'))); ?>">Aceh</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'sumut', home_url('/'))); ?>">Sumatera Utara</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'sumbar', home_url('/'))); ?>">Sumatera Barat</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'riau', home_url('/'))); ?>">Riau</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="gn-mega-column">
+                                        <h4 class="gn-mega-title"><?php esc_html_e('JAWA', 'gesahan-news-pro'); ?></h4>
+                                        <ul class="gn-mega-list">
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'jakarta', home_url('/'))); ?>">DKI Jakarta</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'jabar', home_url('/'))); ?>">Jawa Barat</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'jateng', home_url('/'))); ?>">Jawa Tengah</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'jatim', home_url('/'))); ?>">Jawa Timur</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="gn-mega-column">
+                                        <h4 class="gn-mega-title"><?php esc_html_e('KALIMANTAN', 'gesahan-news-pro'); ?></h4>
+                                        <ul class="gn-mega-list">
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'kalbar', home_url('/'))); ?>">Kalbar</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'kalsel', home_url('/'))); ?>">Kalsel</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'kaltim', home_url('/'))); ?>">Kaltim</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'kalut', home_url('/'))); ?>">Kaltara</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="gn-mega-column">
+                                        <h4 class="gn-mega-title"><?php esc_html_e('SULAWESI & PAPUA', 'gesahan-news-pro'); ?></h4>
+                                        <ul class="gn-mega-list">
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'sulsel', home_url('/'))); ?>">Sulawesi Selatan</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'sulut', home_url('/'))); ?>">Sulawesi Utara</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'papua', home_url('/'))); ?>">Papua</a></li>
+                                            <li><a href="<?php echo esc_url(add_query_arg('region', 'papua-barat', home_url('/'))); ?>">Papua Barat</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
-                    <div class="gn-nav__fade-overlay"></div>
                 </div>
 
                 <div class="gn-nav__right">
                     <button class="gn-search-trigger" aria-label="Buka Pencarian" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
                 </div>
 
@@ -201,7 +196,7 @@ if (!defined('ABSPATH')) {
         </div>
     </div>
 
-    <!-- Fullscreen Search Overlay Modal -->
+    <!-- Fullscreen Search Overlay Modal (Priority 8 - Blur & Fullscreen) -->
     <div class="gn-search-modal" aria-hidden="true">
         <div class="gn-search-modal__overlay"></div>
         <div class="gn-search-modal__container">

@@ -1,10 +1,11 @@
 /**
  * Gesahan News Framework Engine v2.0.0
- * Pure Vanilla JavaScript (No jQuery / No Library Dependencies)
+ * Pure Vanilla JavaScript (Zero Dependency, Performance Engineered)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inisialisasi Fitur Utama
+    // Jalankan seluruh core sistem visual & interaksi produk
+    gesahanInitProductCore();
     gesahanInitDarkMode();
     gesahanInitMobileMenu();
     gesahanInitStickyHeader();
@@ -14,21 +15,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
+ * Core Product Inisialisasi: Tracking scroll & user behavior
+ */
+function gesahanInitProductCore() {
+    const body = document.body;
+    
+    // Deteksi Scroll untuk mengatur Transparansi Glassmorphism pada Header/Visual DNA
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+            body.classList.add('gn-is-scrolling');
+        } else {
+            body.classList.remove('gn-is-scrolling');
+        }
+    }, { passive: true });
+}
+
+/**
  * Pengaturan Dark Mode Switcher & Persistent Storage Logic
  */
 function gesahanInitDarkMode() {
     const toggleBtn = document.querySelector('.gn-dark-mode-toggle');
     if (!toggleBtn) return;
-
+    
     toggleBtn.addEventListener('click', () => {
         const isDark = document.body.classList.contains('gn-dark-mode');
         
         if (isDark) {
             document.body.classList.remove('gn-dark-mode');
+            document.documentElement.classList.remove('gn-dark-mode-applied');
             localStorage.setItem('gn-dark-mode', 'disabled');
             toggleBtn.setAttribute('aria-label', 'Aktifkan Dark Mode');
         } else {
             document.body.classList.add('gn-dark-mode');
+            document.documentElement.classList.add('gn-dark-mode-applied');
             localStorage.setItem('gn-dark-mode', 'enabled');
             toggleBtn.setAttribute('aria-label', 'Aktifkan Light Mode');
         }
@@ -45,9 +64,9 @@ function gesahanInitMobileMenu() {
     const drawerOverlay = document.querySelector('.gn-mobile-drawer__overlay');
     const burgerIcon = document.querySelector('.gn-hamburger-icon');
     const closeIcon = document.querySelector('.gn-close-icon');
-
+    
     if (!menuToggle || !drawer) return;
-
+    
     function openDrawer() {
         drawer.classList.add('gn-mobile-drawer--active');
         drawer.setAttribute('aria-hidden', 'false');
@@ -58,7 +77,7 @@ function gesahanInitMobileMenu() {
             closeIcon.style.display = 'block';
         }
     }
-
+    
     function closeDrawer() {
         drawer.classList.remove('gn-mobile-drawer--active');
         drawer.setAttribute('aria-hidden', 'true');
@@ -69,7 +88,7 @@ function gesahanInitMobileMenu() {
             closeIcon.style.display = 'none';
         }
     }
-
+    
     menuToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = drawer.classList.contains('gn-mobile-drawer--active');
@@ -79,28 +98,27 @@ function gesahanInitMobileMenu() {
             openDrawer();
         }
     });
-
+    
     if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
     if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 }
 
 /**
  * Premium Sticky Navigation Engine on Scroll
- * Mengunci strip kategori (.gn-nav) di posisi atas layar saat disekrol melewati batas
  */
 function gesahanInitStickyHeader() {
     const navBar = document.getElementById('gnNavBar');
     if (!navBar) return;
-
+    
     const stickyPoint = navBar.offsetTop;
-
+    
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > stickyPoint) {
+        if (window.scrollY > stickyPoint) {
             navBar.classList.add('gn-nav--sticky');
         } else {
             navBar.classList.remove('gn-nav--sticky');
         }
-    });
+    }, { passive: true });
 }
 
 /**
@@ -112,9 +130,9 @@ function gesahanInitSearchModal() {
     const closeBtn = document.querySelector('.gn-search-modal__close');
     const overlay = document.querySelector('.gn-search-modal__overlay');
     const searchField = document.querySelector('.gn-search-modal .search-field');
-
+    
     if (!trigger || !modal) return;
-
+    
     function openSearch() {
         modal.classList.add('gn-search-modal--active');
         modal.setAttribute('aria-hidden', 'false');
@@ -123,18 +141,17 @@ function gesahanInitSearchModal() {
             if (searchField) searchField.focus();
         }, 300);
     }
-
+    
     function closeSearch() {
         modal.classList.remove('gn-search-modal--active');
         modal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('gn-lock-scroll');
     }
-
+    
     trigger.addEventListener('click', openSearch);
     if (closeBtn) closeBtn.addEventListener('click', closeSearch);
     if (overlay) overlay.addEventListener('click', closeSearch);
-
-    // ESC Key listener to close modal quickly
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('gn-search-modal--active')) {
             closeSearch();
@@ -148,32 +165,32 @@ function gesahanInitSearchModal() {
 function gesahanInitReadingProgressBar() {
     const bar = document.getElementById('gnReadingBar');
     if (!bar) return;
-
+    
     window.addEventListener('scroll', () => {
         const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         bar.style.width = scrolled + '%';
-    });
+    }, { passive: true });
 }
 
 /**
- * premium Copy To Clipboard Share Button Handler
+ * Premium Copy To Clipboard Share Button Handler
  */
 function gesahanInitShareButtons() {
     const copyBtn = document.querySelector('.gn-share-btn--copy');
     if (!copyBtn) return;
-
+    
     copyBtn.addEventListener('click', () => {
         const url = copyBtn.getAttribute('data-url');
         if (!url) return;
-
+        
         navigator.clipboard.writeText(url).then(() => {
             const originalText = copyBtn.textContent;
             copyBtn.textContent = 'Disalin!';
-            copyBtn.style.background = 'var(--gn-color-success)';
+            copyBtn.style.background = 'var(--gn-color-primary)';
             copyBtn.style.color = '#ffffff';
-
+            
             setTimeout(() => {
                 copyBtn.textContent = originalText;
                 copyBtn.style.background = '';

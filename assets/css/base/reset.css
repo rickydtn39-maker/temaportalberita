@@ -1,92 +1,112 @@
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-
-Reset CSS
-Version : 2.0.0
-
+GESAHAN NEWS FRAMEWORK - RESET STYLESHEET
+Clean & Ultra-Modern Interaction Core
 =========================================================
 */
 
 *,
 *::before,
-*::after{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-    -webkit-text-size-adjust:100%;
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
-body{
-    min-height:100vh;
-    background:var(--gn-color-body);
-    color:var(--gn-color-text);
-    font-family:var(--gn-font-family);
-    font-size:var(--gn-font-size-base);
-    line-height:var(--gn-line-height);
-    text-rendering:optimizeLegibility;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+body {
+    min-height: 100vh;
+    background: var(--gn-color-body);
+    color: var(--gn-color-text);
+    font-family: var(--gn-font-family);
+    font-size: var(--gn-font-size-base);
+    line-height: var(--gn-line-height-base);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Premium Scrollbar Design (Apple style) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gn-color-body);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gn-color-border);
+    border-radius: var(--gn-radius-round);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gn-color-meta);
 }
 
 img,
-picture{
-    display:block;
-    max-width:100%;
-    height:auto;
+picture,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: inherit;
 }
 
-svg{
-    display:block;
+svg {
+    display: block;
+    fill: currentColor;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-    transition:var(--gn-transition);
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--gn-transition-smooth);
 }
 
 button,
 input,
 textarea,
-select{
-    font:inherit;
+select {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
 }
 
-button{
-    cursor:pointer;
-    background:none;
-    border:none;
+button {
+    cursor: pointer;
 }
 
 ul,
-ol{
-    list-style:none;
+ol {
+    list-style: none;
 }
 
-table{
-    border-collapse:collapse;
-    border-spacing:0;
+blockquote {
+    margin: 0;
+    font-family: var(--gn-font-serif);
+    font-style: italic;
+    color: var(--gn-color-title);
+    border-left: 4px solid var(--gn-color-primary);
+    padding-left: var(--gn-space-4);
 }
 
-blockquote{
-    margin:0;
+/* Premium Selection Theme Color */
+::selection {
+    background: var(--gn-color-primary-glow);
+    color: var(--gn-color-primary);
 }
 
-iframe{
-    border:0;
-}
-
-:focus-visible{
-    outline:3px solid var(--gn-color-primary);
-    outline-offset:3px;
-}
-
-::selection{
-    background:var(--gn-color-primary);
-    color:#ffffff;
+:focus-visible {
+    outline: 2px solid var(--gn-color-primary);
+    outline-offset: 4px;
 }

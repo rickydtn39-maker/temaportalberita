@@ -1,21 +1,29 @@
 /*
 =========================================================
-GESAHAN NEWS FRAMEWORK
-Component: Cards & Grid Items (Borderless Premium Editorial Design)
+GESAHAN NEWS FRAMEWORK - CARD SYSTEM
+Apple & Linear Visual DNA (Borderless, Soft Shadows)
 =========================================================
 */
 
 .gn-card {
-    background: transparent;
+    background: var(--gn-color-surface);
     border: none;
+    border-radius: var(--gn-radius-md);
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: transform var(--gn-transition);
+    overflow: hidden;
+    transition: var(--gn-transition-smooth);
 }
 
-/* Image Wrapper */
-.gn-card__image {
+/* Hover state: Card melayang halus, andalkan shadow daripada border kaku */
+.gn-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--gn-shadow-md);
+}
+
+/* Image Core Wrapper */
+.gn-card__image-wrapper {
     display: block;
     position: relative;
     aspect-ratio: 16 / 10;
@@ -24,16 +32,16 @@ Component: Cards & Grid Items (Borderless Premium Editorial Design)
     background-color: var(--gn-color-border);
 }
 
-.gn-card__image img {
+.gn-card__image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: var(--gn-transition-lazy);
 }
 
-/* Efek Zoom Lembut saat Hover */
-.gn-card:hover .gn-card__image img {
-    transform: scale(1.04);
+/* Zooming transisi hardware-accelerated */
+.gn-card:hover .gn-card__image-wrapper img {
+    transform: scale(1.03);
 }
 
 .gn-card__image-placeholder {
@@ -42,30 +50,28 @@ Component: Cards & Grid Items (Borderless Premium Editorial Design)
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background: linear-gradient(135deg, #090d13, #0f172a);
     color: var(--gn-color-white);
     font-family: var(--gn-font-sans);
     font-size: var(--gn-font-size-xs);
     font-weight: var(--gn-font-bold);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    border-radius: var(--gn-radius-md);
 }
 
-/* Body Content */
-.gn-card__body {
+/* Body Content Spacing */
+.gn-card__body-premium {
     padding: var(--gn-space-4) 0 0;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-/* Category Accent Badge */
-.gn-card__badge {
+/* Clean Accent Badges */
+.gn-card__badge-premium-inline {
     align-self: flex-start;
     color: var(--gn-color-primary) !important;
-    font-family: var(--gn-font-sans);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: var(--gn-font-black);
     text-transform: uppercase;
     margin-bottom: var(--gn-space-2);
@@ -73,126 +79,192 @@ Component: Cards & Grid Items (Borderless Premium Editorial Design)
     line-height: 1.2;
 }
 
-/* Title Typography */
-.gn-card__title {
+/* Premium Card Typography */
+.gn-card__title-premium {
     font-family: var(--gn-font-serif);
     font-size: var(--gn-font-size-md);
     font-weight: var(--gn-font-bold);
     line-height: 1.35;
     margin-bottom: var(--gn-space-2);
+    letter-spacing: -0.03em;
 }
 
-.gn-card__title a {
+.gn-card__title-premium a {
     color: var(--gn-color-title) !important;
-    transition: color 0.3s ease;
+    transition: var(--gn-transition-smooth);
 }
 
-.gn-card__title a:hover {
+.gn-card__title-premium a:hover {
     color: var(--gn-color-primary) !important;
 }
 
-/* Excerpt / Narasi Ringkasan Berita Premium */
-.gn-card__excerpt {
-    font-family: var(--gn-font-sans);
+/* Breathable Excerpt Narration with Safe Line Clamp Validation */
+.gn-card__excerpt-premium {
     font-size: var(--gn-font-size-sm);
     color: var(--gn-color-text);
-    line-height: 1.6;
-    margin: 0 0 var(--gn-space-3);
+    line-height: var(--gn-line-height-base);
+    margin-bottom: var(--gn-space-3);
+    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /* Batasi maksimal 2 baris di grid biasa agar presisi */
+    -webkit-line-clamp: 2;
     line-clamp: 2;
-    overflow: hidden;
 }
 
-/* Berikan porsi narasi lebih panjang (3 baris) khusus untuk berita utama Hero Kiri */
-.gn-hero__main .gn-card__excerpt {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    font-size: 0.95rem;
-}
-
-/* Narasi Khusus Kolom Kanan Hero (Lebih Muted dan Rapi) */
-.gn-hero-side-excerpt {
-    font-size: var(--gn-font-size-xs) !important;
-    color: var(--gn-color-meta) !important;
-    line-height: 1.5 !important;
-    margin-bottom: var(--gn-space-2) !important;
-    -webkit-line-clamp: 2 !important;
-    line-clamp: 2 !important;
-    opacity: 0.85;
-}
-
-/* Metadata Default */
-.gn-card__meta {
+/* Sleek Metadata Bottom */
+.gn-card__meta-premium {
     margin-top: auto;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: var(--gn-space-2);
-    font-family: var(--gn-font-sans);
-    font-size: var(--gn-font-size-xs);
-    color: var(--gn-color-meta) !important;
-    padding-top: var(--gn-space-3);
-    border-top: 1px solid var(--gn-color-border);
-}
-
-.gn-card__meta span {
-    display: inline-flex;
-    align-items: center;
-}
-
-.gn-card__meta span:not(:last-child)::after {
-    content: "•";
-    margin-left: var(--gn-space-2);
+    font-size: 10px;
     color: var(--gn-color-meta);
+    text-transform: uppercase;
+    font-weight: var(--gn-font-medium);
+}
+
+.gn-card__meta-premium .gn-bullet {
     opacity: 0.4;
 }
 
-/* Metadata Khusus Kolom Kanan Hero */
-.gn-hero-side-meta {
-    font-family: var(--gn-font-sans);
-    font-size: 10px;
-    color: var(--gn-color-meta);
-    opacity: 0.6;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+/* Category Block Main Card & Sub-Cards */
+.gn-category-block__main-card .gn-card__image-wrapper {
+    aspect-ratio: 16 / 10;
 }
 
-/* 
-=========================================================
-Gaya Pembatas Antar List Berita Kanan (Standard Editorial)
-=========================================================
-*/
-.gn-hero__list .gn-hero-side-card {
+.gn-category-block__list {
+    display: flex;
     flex-direction: column;
+    gap: var(--gn-space-3);
+    margin-top: var(--gn-space-4);
+}
+
+.gn-category-block__mini-card {
     background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--gn-color-border) !important;
-    border-radius: 0;
-    padding-bottom: var(--gn-space-4) !important;
-    height: auto;
+    padding-bottom: var(--gn-space-3);
+    border-bottom: 1px dashed var(--gn-color-border);
 }
 
-.gn-hero__list .gn-hero-side-card:last-child {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
+.gn-category-block__mini-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
-.gn-hero__list .gn-hero-side-card .gn-card__body {
-    padding: 0;
+.gn-category-block__mini-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.gn-hero__list .gn-hero-side-card .gn-card__title {
+.gn-category-block__mini-title {
     font-family: var(--gn-font-serif);
     font-size: var(--gn-font-size-sm);
     font-weight: var(--gn-font-bold);
-    line-height: 1.35;
-    margin-bottom: var(--gn-space-1);
+    line-height: 1.4;
+    margin: 0;
 }
 
-@media (max-width: 992px) {
-    .gn-hero__list .gn-hero-side-card {
-        padding: var(--gn-space-3) 0 !important;
-    }
+.gn-category-block__mini-title a {
+    color: var(--gn-color-title) !important;
+}
+
+.gn-category-block__mini-title a:hover {
+    color: var(--gn-color-primary) !important;
+}
+
+.gn-category-block__mini-date {
+    font-size: 10px;
+    color: var(--gn-color-meta);
+}
+
+/* Video Hub Card System Customizer */
+.gn-video-hub-wrap {
+    background: #060911;
+    padding: var(--gn-space-8) 0;
+    margin-bottom: var(--gn-space-9);
+    border-radius: var(--gn-radius-lg);
+}
+
+.gn-video-card {
+    background: transparent !important;
+}
+
+.gn-video-card__thumb-container {
+    position: relative;
+    border-radius: var(--gn-radius-md);
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.gn-video-card__thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.gn-video-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--gn-transition-lazy);
+}
+
+/* Glassmorphism Centered Play Button Overlay */
+.gn-video-card__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--gn-color-white);
+    border-radius: var(--gn-radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--gn-transition-smooth);
+    z-index: 5;
+}
+
+.gn-video-card:hover .gn-video-card__play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--gn-color-primary);
+    border-color: var(--gn-color-primary);
+}
+
+.gn-video-card:hover .gn-video-card__thumb img {
+    transform: scale(1.03);
+}
+
+.gn-video-card__body {
+    padding-top: var(--gn-space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gn-space-1);
+}
+
+.gn-video-card__title {
+    font-family: var(--gn-font-serif);
+    font-size: var(--gn-font-size-sm);
+    font-weight: var(--gn-font-bold);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.gn-video-card__title a {
+    color: #f3f4f6 !important;
+}
+
+.gn-video-card__title a:hover {
+    color: var(--gn-color-primary) !important;
+}
+
+.gn-video-card__meta {
+    font-size: 10px;
+    color: #6b7280;
 }

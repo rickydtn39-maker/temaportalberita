@@ -9,12 +9,11 @@ if (!defined('ABSPATH')) {
 get_header();
 
 // Mengambil konfigurasi toggle dari customizer
-$show_progress_bar  = get_theme_mod('gesahan_enable_progress_bar', '1') === '1';
+$show_progress_bar = get_theme_mod('gesahan_enable_progress_bar', '1') === '1';
 $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1';
-
 ?>
 
-<!-- Reading Progress Bar (Mendeteksi scroll membaca artikel) -->
+<!-- Reading Progress Bar Sticky (Visual DNA - Priority 1 & 4) -->
 <?php if ($show_progress_bar) : ?>
     <div class="gn-progress-container">
         <div id="gnReadingBar" class="gn-progress-bar"></div>
@@ -26,28 +25,28 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
         
         <!-- Sisi Kiri: Artikel Utama (Content First) -->
         <div class="gn-content">
-            
             <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
-
                     <article class="gn-post">
                         
+                        <!-- Breadcrumbs & Reading Time -->
                         <div class="gn-post__header">
                             <?php gesahan_breadcrumbs(); ?>
-                            
                             <span class="gn-reading-time">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                                 <?php echo esc_html(gesahan_get_reading_time(get_the_content())); ?>
                             </span>
                         </div>
 
+                        <!-- Judul Utama Jumbo (Tipografi Kontras Tinggi) -->
                         <h1 class="gn-post__title">
                             <?php the_title(); ?>
                         </h1>
 
+                        <!-- Meta Penulis & Tanggal -->
                         <div class="gn-post__meta">
                             <div class="gn-post__author">
-                                <?php echo get_avatar(get_the_author_meta('ID'), 44); ?>
+                                <?php echo get_avatar(get_the_author_meta('ID'), 48); ?>
                                 <div class="gn-post__author-info">
                                     <span class="gn-post__author-name"><?php the_author_posts_link(); ?></span>
                                     <span class="gn-post__date"><?php echo esc_html(get_the_date()); ?></span>
@@ -55,7 +54,7 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                             </div>
                         </div>
 
-                        <!-- Modul Premium Social Share Buttons Atas -->
+                        <!-- Premium Social Share Buttons (Kombinasi Clipboard API & Native Share) -->
                         <?php if ($show_share_buttons) : ?>
                             <div class="gn-share-buttons">
                                 <span class="gn-share-buttons__label"><?php esc_html_e('BAGIKAN:', 'gesahan-news-pro'); ?></span>
@@ -74,6 +73,7 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                             </div>
                         <?php endif; ?>
 
+                        <!-- Gambar Utama (Cinematic Aspect Ratio) -->
                         <?php if (has_post_thumbnail()) : ?>
                             <figure class="gn-post__featured">
                                 <?php the_post_thumbnail('large'); ?>
@@ -85,10 +85,12 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                             </figure>
                         <?php endif; ?>
 
+                        <!-- Isi Artikel (Format Serif Ramah Mata + Drop Cap Paragraf Pertama) -->
                         <div class="gn-post__entry">
                             <?php the_content(); ?>
                         </div>
 
+                        <!-- Tags Artikel -->
                         <?php 
                         $tags_list = get_the_tag_list('', ' ');
                         if ($tags_list) : 
@@ -111,13 +113,13 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                                 <p class="gn-author-box__bio">
                                     <?php 
                                     $author_desc = get_the_author_meta('description');
-                                    echo !empty($author_desc) ? esc_html($author_desc) : esc_html__('Penulis aktif yang membagikan konten berkualitas di portal berita ini.', 'gesahan-news-pro');
+                                    echo !empty($author_desc) ? esc_html($author_desc) : esc_html__('Penulis aktif yang membagikan analisis dan berita terkurasi di portal ini.', 'gesahan-news-pro');
                                     ?>
                                 </p>
                             </div>
                         </div>
 
-                        <!-- Related Posts Grid -->
+                        <!-- Related Posts Grid (Asymmetric & Borderless) -->
                         <?php
                         $related = gesahan_get_related_posts(get_the_ID(), 3);
                         if ($related->have_posts()) :
@@ -126,17 +128,16 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                                 <h3 class="gn-related__title"><?php esc_html_e('Berita Terkait', 'gesahan-news-pro'); ?></h3>
                                 <div class="gn-grid gn-grid-3">
                                     <?php 
-                                    while ($related->have_posts()) : 
-                                        $related->the_post(); 
+                                    while ($related->have_posts()) : $related->the_post(); 
                                     ?>
                                         <article class="gn-card">
-                                            <a class="gn-card__image" href="<?php the_permalink(); ?>">
+                                            <a class="gn-card__image-wrapper" href="<?php the_permalink(); ?>">
                                                 <?php if (has_post_thumbnail()) : ?>
                                                     <?php the_post_thumbnail('medium'); ?>
                                                 <?php endif; ?>
                                             </a>
-                                            <div class="gn-card__body">
-                                                <h4 class="gn-card__title gn-line-clamp-2">
+                                            <div class="gn-card__body-premium">
+                                                <h4 class="gn-card__title-premium">
                                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                                 </h4>
                                             </div>
@@ -149,7 +150,7 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                             </div>
                         <?php endif; ?>
 
-                        <!-- Comments Section -->
+                        <!-- Discussion Forum (Comments Section) -->
                         <?php 
                         if (comments_open() || get_comments_number()) {
                             comments_template();
@@ -157,19 +158,17 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                         ?>
 
                     </article>
-
                 <?php endwhile; ?>
             <?php endif; ?>
-
         </div>
 
-        <!-- Sisi Kanan: Sidebar Modular -->
+        <!-- Sisi Kanan: Sidebar Modular (Hanya muncul di Single/Archive/Search) -->
         <aside class="gn-sidebar">
             <div class="gn-widget">
-                <h3 class="gn-widget__title">Terpopuler</h3>
-                
+                <h3 class="gn-widget__title"><?php esc_html_e('Terpopuler', 'gesahan-news-pro'); ?></h3>
                 <div class="gn-widget__list">
                     <?php
+                    // Ambil 5 berita trending terpopuler untuk sidebar
                     $trending = gesahan_get_trending_posts(5);
                     if ($trending->have_posts()) :
                         while ($trending->have_posts()) : $trending->the_post();
@@ -183,7 +182,7 @@ $show_share_buttons = get_theme_mod('gesahan_enable_share_buttons', '1') === '1'
                         endwhile;
                         wp_reset_postdata();
                     else :
-                        echo '<p class="gn-empty">Belum ada berita terpopuler.</p>';
+                        echo '<p class="gn-empty">' . esc_html__('Belum ada berita terpopuler.', 'gesahan-news-pro') . '</p>';
                     endif;
                     ?>
                 </div>

@@ -1,206 +1,270 @@
-<?php
+/*
+=========================================================
+GESAHAN NEWS FRAMEWORK - CARD SYSTEM
+Apple & Linear Visual DNA (Borderless, Soft Shadows)
+=========================================================
+*/
 
-declare(strict_types=1);
-
-if (!defined('ABSPATH')) {
-    exit;
+.gn-card {
+    background: var(--gn-color-surface);
+    border: none;
+    border-radius: var(--gn-radius-md);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    transition: var(--gn-transition-smooth);
 }
 
-/**
- * Class Gesahan_Query_Tracker
- * Melacak ID artikel yang sudah ditampilkan di halaman utama untuk menghindari duplikasi konten.
- */
-final class Gesahan_Query_Tracker 
-{
-    private static array $rendered_ids = [];
-
-    public static function track(int $post_id): void 
-    {
-        if (!in_array($post_id, self::$rendered_ids, true)) {
-            self::$rendered_ids[] = $post_id;
-        }
-    }
-
-    public static function get_excluded(): array 
-    {
-        return self::$rendered_ids;
-    }
+/* Hover state: Card melayang halus, andalkan shadow daripada border kaku */
+.gn-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--gn-shadow-md);
 }
 
-/**
- * Hero Posts Query
- */
-function gesahan_get_hero_posts(int $limit = 5): WP_Query
-{
-    return new WP_Query([
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ]);
+/* Image Core Wrapper */
+.gn-card__image-wrapper {
+    display: block;
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--gn-radius-md);
+    background-color: var(--gn-color-border);
 }
 
-/**
- * Latest Posts Query (Aman dari duplikasi menggunakan Tracker)
- */
-function gesahan_get_latest_posts(int $limit = 6): WP_Query
-{
-    $args = [
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ];
-
-    $exclude = Gesahan_Query_Tracker::get_excluded();
-    if (!empty($exclude)) {
-        $args['post__not_in'] = $exclude;
-    }
-
-    return new WP_Query($args);
+.gn-card__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--gn-transition-lazy);
 }
 
-/**
- * Category Posts Query
- */
-function gesahan_get_category_posts(int $category_id, int $limit = 6): WP_Query
-{
-    return new WP_Query([
-        'post_type'           => 'post',
-        'cat'                 => $category_id,
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ]);
+/* Zooming transisi hardware-accelerated */
+.gn-card:hover .gn-card__image-wrapper img {
+    transform: scale(1.03);
 }
 
-/**
- * Trending / Popular Posts (Berdasarkan interaksi jumlah komentar)
- */
-function gesahan_get_trending_posts(int $limit = 5): WP_Query
-{
-    $args = [
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'orderby'             => 'comment_count',
-        'order'               => 'DESC',
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ];
-
-    $exclude = Gesahan_Query_Tracker::get_excluded();
-    if (!empty($exclude)) {
-        $args['post__not_in'] = $exclude;
-    }
-
-    return new WP_Query($args);
+.gn-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #090d13, #0f172a);
+    color: var(--gn-color-white);
+    font-family: var(--gn-font-sans);
+    font-size: var(--gn-font-size-xs);
+    font-weight: var(--gn-font-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-/**
- * Related Posts (Mengambil artikel dari kategori yang sama, aman dari artikel aktif)
- */
-function gesahan_get_related_posts(int $post_id, int $limit = 3): WP_Query
-{
-    $categories = wp_get_post_categories($post_id);
-    
-    if (empty($categories)) {
-        return new WP_Query();
-    }
-
-    return new WP_Query([
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'category__in'        => $categories,
-        'post__not_in'        => [$post_id],
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ]);
+/* Body Content Spacing */
+.gn-card__body-premium {
+    padding: var(--gn-space-4) 0 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-/**
- * Breaking News Query (Mengambil artikel terbaru)
- */
-function gesahan_get_breaking_news(int $limit = 5): WP_Query
-{
-    return new WP_Query([
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ]);
+/* Clean Accent Badges */
+.gn-card__badge-premium-inline {
+    align-self: flex-start;
+    color: var(--gn-color-primary) !important;
+    font-size: 10px;
+    font-weight: var(--gn-font-black);
+    text-transform: uppercase;
+    margin-bottom: var(--gn-space-2);
+    letter-spacing: 0.08em;
+    line-height: 1.2;
 }
 
-/**
- * Video Posts Query (Mengambil artikel dengan format Video / Kategori khusus Video)
- */
-function gesahan_get_video_posts(int $limit = 3): WP_Query
-{
-    // Mengambil pos dengan kategori bernama 'video' atau pos format video jika didukung
-    $args = [
-        'post_type'           => 'post',
-        'post_status'         => 'publish',
-        'posts_per_page'      => $limit,
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ];
-
-    // Jika kategori video ada, utamakan kategori tersebut
-    $video_cat = get_category_by_slug('video');
-    if ($video_cat) {
-        $args['cat'] = $video_cat->term_id;
-    }
-
-    return new WP_Query($args);
+/* Premium Card Typography */
+.gn-card__title-premium {
+    font-family: var(--gn-font-serif);
+    font-size: var(--gn-font-size-md);
+    font-weight: var(--gn-font-bold);
+    line-height: 1.35;
+    margin-bottom: var(--gn-space-2);
+    letter-spacing: -0.03em;
 }
 
-/**
- * Menghitung estimasi waktu membaca artikel secara akurat
- */
-function gesahan_get_reading_time(string $content): string
-{
-    $words_per_minute = 200;
-    $clean_content    = strip_shortcodes(strip_tags($content));
-    $word_count       = str_word_count($clean_content);
-    $reading_time     = ceil($word_count / $words_per_minute);
-
-    return sprintf(
-        esc_html(_n('%d menit baca', '%d menit baca', (int)$reading_time, 'gesahan-news-pro')),
-        $reading_time
-    );
+.gn-card__title-premium a {
+    color: var(--gn-color-title) !important;
+    transition: var(--gn-transition-smooth);
 }
 
-/**
- * Breadcrumb Generator SEO Friendly
- */
-function gesahan_breadcrumbs(): void
-{
-    if (is_front_page() || is_home()) {
-        return;
-    }
+.gn-card__title-premium a:hover {
+    color: var(--gn-color-primary) !important;
+}
 
-    echo '<nav class="gn-breadcrumb" aria-label="Breadcrumb">';
-    echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html__('Beranda', 'gesahan-news-pro') . '</a>';
-    echo '<span class="gn-breadcrumb__separator">/</span>';
+/* Breathable Excerpt Narration */
+.gn-card__excerpt-premium {
+    font-size: var(--gn-font-size-sm);
+    color: var(--gn-color-text);
+    line-height: var(--gn-line-height-base);
+    margin-bottom: var(--gn-space-3);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard Property Fallback */
+    overflow: hidden;
+}
 
-    if (is_single()) {
-        $categories = get_the_category();
-        if (!empty($categories)) {
-            echo '<a href="' . esc_url(get_category_link($categories[0]->term_id)) . '">' . esc_html($categories[0]->name) . '</a>';
-            echo '<span class="gn-breadcrumb__separator">/</span>';
-        }
-        echo '<span class="gn-breadcrumb__current">' . esc_html(get_the_title()) . '</span>';
-    } elseif (is_category()) {
-        echo '<span class="gn-breadcrumb__current">' . esc_html(single_cat_title('', false)) . '</span>';
-    } elseif (is_tag()) {
-        echo '<span class="gn-breadcrumb__current">' . esc_html(single_tag_title('', false)) . '</span>';
-    } elseif (is_search()) {
-        echo '<span class="gn-breadcrumb__current">' . sprintf(esc_html__('Hasil Pencarian: "%s"', 'gesahan-news-pro'), get_search_query()) . '</span>';
-    }
-    echo '</nav>';
+/* Sleek Metadata Bottom */
+.gn-card__meta-premium {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--gn-space-2);
+    font-size: 10px;
+    color: var(--gn-color-meta);
+    text-transform: uppercase;
+    font-weight: var(--gn-font-medium);
+}
+
+.gn-card__meta-premium .gn-bullet {
+    opacity: 0.4;
+}
+
+/* Category Block Main Card & Sub-Cards */
+.gn-category-block__main-card .gn-card__image-wrapper {
+    aspect-ratio: 16 / 10;
+}
+
+.gn-category-block__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gn-space-3);
+    margin-top: var(--gn-space-4);
+}
+
+.gn-category-block__mini-card {
+    background: transparent;
+    padding-bottom: var(--gn-space-3);
+    border-bottom: 1px dashed var(--gn-color-border);
+}
+
+.gn-category-block__mini-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.gn-category-block__mini-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gn-category-block__mini-title {
+    font-family: var(--gn-font-serif);
+    font-size: var(--gn-font-size-sm);
+    font-weight: var(--gn-font-bold);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.gn-category-block__mini-title a {
+    color: var(--gn-color-title) !important;
+}
+
+.gn-category-block__mini-title a:hover {
+    color: var(--gn-color-primary) !important;
+}
+
+.gn-category-block__mini-date {
+    font-size: 10px;
+    color: var(--gn-color-meta);
+}
+
+/* Video Hub Card System Customizer */
+.gn-video-hub-wrap {
+    background: #060911;
+    padding: var(--gn-space-8) 0;
+    margin-bottom: var(--gn-space-9);
+    border-radius: var(--gn-radius-lg);
+}
+
+.gn-video-card {
+    background: transparent !important;
+}
+
+.gn-video-card__thumb-container {
+    position: relative;
+    border-radius: var(--gn-radius-md);
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.gn-video-card__thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.gn-video-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--gn-transition-lazy);
+}
+
+/* Glassmorphism Centered Play Button Overlay */
+.gn-video-card__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--gn-color-white);
+    border-radius: var(--gn-radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--gn-transition-smooth);
+    z-index: 5;
+}
+
+.gn-video-card:hover .gn-video-card__play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--gn-color-primary);
+    border-color: var(--gn-color-primary);
+}
+
+.gn-video-card:hover .gn-video-card__thumb img {
+    transform: scale(1.03);
+}
+
+.gn-video-card__body {
+    padding-top: var(--gn-space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gn-space-1);
+}
+
+.gn-video-card__title {
+    font-family: var(--gn-font-serif);
+    font-size: var(--gn-font-size-sm);
+    font-weight: var(--gn-font-bold);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.gn-video-card__title a {
+    color: #f3f4f6 !important;
+}
+
+.gn-video-card__title a:hover {
+    color: var(--gn-color-primary) !important;
+}
+
+.gn-video-card__meta {
+    font-size: 10px;
+    color: #6b7280;
 }
